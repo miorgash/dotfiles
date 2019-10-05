@@ -4,13 +4,16 @@
 let g:python3_host_prog="$VIRTUAL_ENV/bin/python3"
 
 ""
-" VimPlug
+" Plugin
 "
 call plug#begin('~/.config/nvim/plugged')
 Plug 'davidhalter/jedi-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'cohama/lexima.vim'
 call plug#end()
+
+" NERDTree
+set modifiable
 
 ""
 " Encoding
