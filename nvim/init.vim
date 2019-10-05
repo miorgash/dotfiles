@@ -1,4 +1,9 @@
 ""
+" Make it simple as possible. You will not be able to use all of the prepared features.
+" Make it explicit as possible. Plugins for completion will be with you.
+"
+
+""
 " Path
 "
 let g:python3_host_prog="$VIRTUAL_ENV/bin/python3"
