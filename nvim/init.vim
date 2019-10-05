@@ -23,7 +23,7 @@ set fileformats=unix,dos,mac
 " Visualization
 "
 
-" Favorite Color Scheme
+" Color Scheme
 colorscheme iceberg
 
 " Syntax analysis
@@ -32,6 +32,7 @@ syntax on
 
 " Row number
 set number
+set cursorline
 
 " Multibyte letters
 set ambiwidth=double
