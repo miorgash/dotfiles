@@ -8,6 +8,8 @@ let g:python3_host_prog="$VIRTUAL_ENV/bin/python3"
 "
 call plug#begin('~/.config/nvim/plugged')
 Plug 'davidhalter/jedi-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'cohama/lexima.vim'
 call plug#end()
 
 ""
