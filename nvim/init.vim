@@ -1,4 +1,16 @@
 ""
+" Path
+"
+let g:python3_host_prog="$VIRTUAL_ENV/bin/python3"
+
+""
+" VimPlug
+"
+call plug#begin('~/.config/nvim/plugged')
+Plug 'davidhalter/jedi-vim'
+call plug#end()
+
+""
 " Encoding
 "
 set encoding=utf-8
