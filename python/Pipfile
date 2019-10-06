@@ -20,6 +20,11 @@ pandas-profiling = "*"
 spacy = "*"
 nltk = "*"
 mecab-python3 = "*"
+gensim = "*"
+joblib = "*"
+boto3 = "*"
+optuna = "*"
+seaborn = "*"
 
 [requires]
 python_version = "3.7"
