@@ -4,9 +4,9 @@ WORK_BASE="/usr/src"
 
 MECAB_ROOT="${WORK_BASE}/mecab"
 cd ${WORK_BASE}
-git clone https://github.com/taku910/mecab.git
+sudo git clone https://github.com/taku910/mecab.git
 cd ${MECAB_ROOT}/mecab
-./configure --enable-utf8-only
+sudo ./configure --enable-utf8-only
 make
 make check
 sudo make install
@@ -14,14 +14,14 @@ sudo make install
 # default dictionary
 cd ${MECAB_ROOT}/mecab-ipadic
 # https://akamist.com/blog/archives/2578
-./configure --with-charset=utf8 # --with-mecab-config=/usr/local/bin/mecab-config
+sudo ./configure --with-charset=utf8 --with-mecab-config=/usr/local/bin/mecab-config
 make
 sudo make install
 
 # neologd
-# sudo ln -s /usr/local/bin/mecab /usr/bin/mecab
-# sudo ln -s /usr/local/bin/mecab-config /usr/bin/mecab-config
+sudo ln -s /usr/local/bin/mecab /usr/bin/mecab
+sudo ln -s /usr/local/bin/mecab-config /usr/bin/mecab-config
 cd ${MECAB_ROOT}
-git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git
+sudo git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git
 cd ${MECAB_ROOT}/mecab-ipadic-neologd
-./bin/install-mecab-ipadic-neologd -n -y
+sudo ./bin/install-mecab-ipadic-neologd -n -y
