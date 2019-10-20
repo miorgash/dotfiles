@@ -25,6 +25,8 @@ joblib = "*"
 boto3 = "*"
 optuna = "*"
 seaborn = "*"
+jupyter-contrib-nbextensions = "*"
+jupyter-nbextensions-configurator = "*"
 
 [requires]
 python_version = "3.7"
