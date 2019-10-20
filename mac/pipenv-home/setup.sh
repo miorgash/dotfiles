@@ -1,6 +1,8 @@
 #!/bin/bash
+# Create virtual-env in home directory
 cd $HOME
-echo `pwd`
-# Extensions
-pipenv run jupyter contrib nbextension install --user
+pipenv install --skip-lock
+# GUI Configurator
+# home の仮想環境の jupyter コマンドを使いたいだけで
+# 設定自体は仮想環境をまたいで有効なはず
 pipenv run jupyter nbextensions_configurator enable --user
