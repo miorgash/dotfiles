@@ -1,2 +1,2 @@
 #!/bin/bash
-ln -s ${REPOSITORIES_HOME}/dotfiles/tmux/.tmux.conf ${HOME}/.tmux.conf
+ln -sf ${REPOSITORIES_HOME}/dotfiles/mac/tmux/.tmux.conf ${HOME}/.tmux.conf
