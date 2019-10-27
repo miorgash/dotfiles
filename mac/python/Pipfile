@@ -28,6 +28,7 @@ seaborn = "*"
 jupyter-nbextensions-configurator = "*"
 jupyter-contrib-nbextensions = "*"
 rise = "*"
+xgboost = "*"
 
 [requires]
 python_version = "3.7"
