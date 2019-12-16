@@ -29,6 +29,7 @@ jupyter-nbextensions-configurator = "*"
 jupyter-contrib-nbextensions = "*"
 rise = "*"
 xgboost = "*"
+lightgbm = "*"
 
 [requires]
 python_version = "3.7"
