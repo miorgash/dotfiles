@@ -1,0 +1,29 @@
+tap "homebrew/bundle"
+tap "homebrew/core"
+
+# **
+# other host apps
+# *
+brew "git"
+brew "pyenv"
+brew "python3"
+
+# **
+# guest
+# *
+
+# dependencies
+brew "swig"
+
+# shell, editor, terminal emurator, etc.
+brew "tmux"
+brew "zsh"
+brew "neovim"
+brew "docker"
+
+# useful shell commands
+brew "tree"
+
+# nlp
+brew "mecab"
+brew "mecab-ipadic"
