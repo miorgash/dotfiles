@@ -5,7 +5,6 @@ tap "homebrew/core"
 # other host apps
 # *
 brew "git"
-brew "pyenv"
 brew "python3"
 
 # **
