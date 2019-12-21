@@ -77,5 +77,8 @@ brew
 ```
 
 # Caution
-- path: pipx > pyenv > usr/local/bin
+- path: pipx > usr/local/bin
 
+# Idea
+- Python Interpreter のバージョン管理は行わない．pyenv を用いることで可能だが，シンプルさにかけるため．最新の 3 系のみ保持する．（3.8 別バージョン使いたくなったら docker とか使う）
+- venv で仮想環境を管理する．公式で外部アプリケーションとの連携が容易なため．
