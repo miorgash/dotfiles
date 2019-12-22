@@ -8,7 +8,6 @@
 echo '\n# user settings' >> ~/.zshenv
 echo 'export REPOS_HOME="${HOME}/Repos"' >> ~/.zshenv
 echo 'export JUPYTER_HOME="${HOME}/.jupyter"' >> ~/.zshenv
-echo 'export ENV_DIR="${HOME}/.venv"' >> ~/.zshenv
 
 # for neovim etc.
 echo '\n# nvim settings' >> ~/.zshenv
