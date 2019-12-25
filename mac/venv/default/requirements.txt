@@ -9,6 +9,7 @@ scipy
 flask
 pandas
 sklearn
+jupyter
 pandas-profiling
 spacy
 nltk
