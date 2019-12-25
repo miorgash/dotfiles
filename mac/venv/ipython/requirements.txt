@@ -1,0 +1,3 @@
+# !! don't write dependencies.  !!
+# !! you don't need pip freeze. !!
+ipykernel
