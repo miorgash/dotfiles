@@ -9,7 +9,7 @@
 let g:python3_host_prog="$VIRTUAL_ENV/bin/python3"
 
 ""
-" Plugin
+" Plugin w/vim-plug
 "
 call plug#begin('~/.config/nvim/plugged')
 Plug 'davidhalter/jedi-vim'
