@@ -19,6 +19,7 @@ call plug#end()
 
 " NERDTree
 set modifiable
+map <C-t> :NERDTreeToggle<CR>
 
 ""
 " Encoding
