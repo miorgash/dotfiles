@@ -19,7 +19,9 @@ call plug#end()
 
 " NERDTree
 set modifiable
-map <C-t> :NERDTreeToggle<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-r> gT
+let NERDTreeShowHidden = 1
 
 ""
 " Encoding
@@ -69,8 +71,14 @@ endif
 " Accessibility
 "
 
+" Buffer accessibility
+nnoremap <C-h> :bprev<CR>
+nnoremap <C-l> :bnext<CR>
+nnoremap <C-k> :bfirst<CR>
+nnoremap <C-j> :blast<CR>
+
 " Clipboard accessibility
-"set clipboard=unnamed,autoselect   "for classic vim
+" set clipboard=unnamed,autoselect  "for classic vim
 set clipboard+=unnamedplus          "for neovim
 
 " Backspace-setting
