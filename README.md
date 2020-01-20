@@ -1,3 +1,73 @@
+# ツール依存関係
+
+```
+brew
+|\_ zsh
+|\_ git
+|    \_ prezto
+ \_ python3
+    |\_ venv
+    |    \_ pip
+    |        \_ jupyter
+     \_ pip
+         \_ pipx
+            |\_ jupyter
+             \_ awscli
+```
+
+
+# パッケージ管理
+## pipx
+Python 製非 Python モジュールのアプリケーションを管理．
+
+## brew
+非 Python 製アプリケーションを管理．
+
+## git
+pipx, brew に無いものを管理．
+
+## curl, wget ほか
+pipx, brew, git に無いものを管理．
+
+## pip3@python3
+pipx を管理．
+
+## pip@venv
+Python モジュールを管理．
+
+
+# インタプリタ・ipython カーネル
+## brew
+Python3 系を 1 つだけインストールする．
+インタプリタはこの Python3 のみ．
+mac 標準の Python2 はシステム利用．  
+ほかの Python3 は必要に応じて Docker やクラウドで利用．
+
+## venv
+Python3 系の venv で仮想環境をつくる．  
+```sh
+$ python3 -m venv ~/.venv/${venv_name}
+```
+
+## ipython
+```sh
+$ # venv_name と kernel_name は一緒にしておくとわかりやすい
+$ source ~/.venv/${venv_name}/activate
+$ ipython kernel install --user --name=${kernel_name} --display-name=${kernel_name}
+```
+
+
+# 開発環境
+## neovim
+- brew でインストールする．
+
+## jupyter
+- jupyter は Python 製非 Python モジュールのアプリケーションだが，全ての venv 環境で pip でインストールする．venv 環境に ipython 系モジュール（matplotlib etc）をインストールすると入ってしまうため．
+- `jupyter notebook` 実行時は Python3 または venv の jupyter が実行される．
+- 前述 ipython コマンドで追加したカーネルを NoteBook 作成時・作成後に選択できる．
+
+---
+bak
 # What for
 - アプリケーションのインストールとセットアップ
 
@@ -33,8 +103,7 @@
     |    \_ $CONFIG
     |\_ $APP
     |   |\_ setup.sh
-    |    \_ $CONFIG
-     \_ ...
+    |    \_ $CONFIG \_ ...
 ```
 
 # Installation Dependency
@@ -63,17 +132,10 @@ brew
 |\_ git
 |   |\_ $tools
 |    \_ prezto
-|\_ pip@python3
-|    \_ pipx
-|       |\_ jupyter
-|        \_ awscli
-|\_ curl
-|    \_ poetry
- \_ pyenv
-    |\_ Python3.7.5
-    |   |\_ $modules
-    |    \_ ...
-     \_ Python3.8.0
+ \_ pip@python3
+     \_ pipx
+        |\_ jupyter
+         \_ awscli
 ```
 
 # Caution
@@ -82,4 +144,3 @@ brew
 # Idea
 - Python Interpreter のバージョン管理は行わない．pyenv を用いることで可能だが，シンプルさにかけるため．最新の 3 系のみ保持する．（3.8 別バージョン使いたくなったら docker とか使う）
 - venv で仮想環境を管理する．公式で外部アプリケーションとの連携が容易なため．
-- 
