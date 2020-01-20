@@ -15,6 +15,21 @@ brew
              \_ awscli
 ```
 
+# 検討の上忌避した技術
+## pyenv
+- Docker で済む
+- Docker で済むのに生の Python をラップするものの仕様を理解する手間がもったいない
+
+## pipenv
+- 開発が止まっている．
+
+## poetry
+- よさそうだが分析目的にはオーバースペック．
+
+## pipx
+- 仕様上 PATH において常に優先される必要があるが，他の venv への切替時はそちらが優先されてしまう．
+- とはいえ notebook の設定を共通化するために必要？
+- 壊れてるのをとりあえず直したい 2020.01.21.
 
 # パッケージ管理
 ## pipx
@@ -65,6 +80,11 @@ $ ipython kernel install --user --name=${kernel_name} --display-name=${kernel_na
 - jupyter は Python 製非 Python モジュールのアプリケーションだが，全ての venv 環境で pip でインストールする．venv 環境に ipython 系モジュール（matplotlib etc）をインストールすると入ってしまうため．
 - `jupyter notebook` 実行時は Python3 または venv の jupyter が実行される．
 - 前述 ipython コマンドで追加したカーネルを NoteBook 作成時・作成後に選択できる．
+
+
+- jupyter のインストール先に関わらず以下の設定が適用される；venv の jupyter 実行時でも以下挙動は変わらない
+  - ~/.jupyter/custom/custom.css を参照する．
+  - nbextenstion は？
 
 ---
 bak
