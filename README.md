@@ -64,6 +64,7 @@ operation ごとの結果
 | `su`           |         no  |    yes               | ☺︎ | - | ☺︎ | - |
 | execute shell script |   no    |  no             | ☺︎ | - | - | - |
 | `ssh`          |             |                   | ? | ? | ? | ? |
+| `source activate` in venv |  |                     | - | - | - | - |
 
 # パッケージ管理
 ## pipx
