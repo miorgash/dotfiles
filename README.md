@@ -14,22 +14,49 @@ brew
             |\_ jupyter
              \_ awscli
 ```
+# テーマ
+- シンプル
+- 役割分担
 
 # 検討の上忌避した技術
-## pyenv
+## shell 関連
+### oh-my-zsh
+- オーバースペックのため忌避
+
+## Python 関連
+### pyenv
 - Docker で済む
 - Docker で済むのに生の Python をラップするものの仕様を理解する手間がもったいない
 
-## pipenv
+### pipenv
 - 開発が止まっている．
 
-## poetry
+### poetry
 - よさそうだが分析目的にはオーバースペック．
 
-## pipx
+### pipx
 - 仕様上 PATH において常に優先される必要があるが，他の venv への切替時はそちらが優先されてしまう．
-- とはいえ notebook の設定を共通化するために必要？
-- 壊れてるのをとりあえず直したい 2020.01.21.
+  - とはいえ notebook の設定を共通化するために必要？
+  - 壊れてるのを直してから検討 2020.01.21.
+
+# はじめに；zsh の設定について
+## インストール・セットアップ
+- zsh は brew でインストール
+- 設定は prezto を使う．
+
+## 開発環境における役割
+状況に応じて，シェル起動時にパスの設定等を行う．
+
+「ログインシェル起動時」っていつ？
+サブプロセス起動時っていつ？
+
+| file | start os | start terminal | `zsh` | `tmux new` | `su` | `ssh` | execute shell script | 
+| - | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| .zlogin |  |  |  |  |  |  |  |
+| .zshenv |  |  |  |  |  |  |  |
+| .zprofile |  |  |  |  |  |  |  |
+| .zshrc |  |  |  |  |  |  |  |
+| .zlogout |  |  |  |  |  |  |  |
 
 # パッケージ管理
 ## pipx
@@ -85,6 +112,10 @@ $ ipython kernel install --user --name=${kernel_name} --display-name=${kernel_na
 - jupyter のインストール先に関わらず以下の設定が適用される；venv の jupyter 実行時でも以下挙動は変わらない
   - ~/.jupyter/custom/custom.css を参照する．
   - nbextenstion は？
+
+# other
+- 分析者個人の開発環境でインタプリタを切り替える場合があるとすれば，安定版と最新版を使い分ける時．
+
 
 ---
 bak
