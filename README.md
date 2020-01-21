@@ -45,18 +45,25 @@ brew
 - 設定は prezto を使う．
 
 ## 開発環境における役割
-状況に応じて，シェル起動時にパスの設定等を行う．
+- there're login/non-login shell attributes and interective/non-interactive attributes.
 
-「ログインシェル起動時」っていつ？
-サブプロセス起動時っていつ？
+| \- | login | non-login |
+| -: | :-: | :-: |
+| interactive | env > profile > rc > login | env > rc |
+| non-interactive | env > profile > login | env |
 
-| file | start os | start terminal | `zsh` | `tmux new` | `su` | `ssh` | execute shell script | 
-| - | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| .zlogin |  |  |  |  |  |  |  |
-| .zshenv |  |  |  |  |  |  |  |
-| .zprofile |  |  |  |  |  |  |  |
-| .zshrc |  |  |  |  |  |  |  |
-| .zlogout |  |  |  |  |  |  |  |
+*[The Z Shell Manual](http://zsh.sourceforge.net/Doc/zsh_a4.pdf)*
+
+operation ごとの結果
+
+| operation      | login shell | interective shell | env | profile | rc | login |
+| - | :-: | :-: | :-: | :-: | :-: | :-: |
+| start terminal |         yes |    yes               | ☺︎ | ☺︎ | ☺︎ | ☺︎ |
+| `tmux new`     |         yes |    yes               | ☺︎ | ☺︎ | ☺︎ | ☺︎ |
+| `zsh`          |         no  |    yes               | ☺︎ | - | ☺︎ | - |
+| `su`           |         no  |    yes               | ☺︎ | - | ☺︎ | - |
+| execute shell script |   no    |  no             | ☺︎ | - | - | - |
+| `ssh`          |             |                   | ? | ? | ? | ? |
 
 # パッケージ管理
 ## pipx
