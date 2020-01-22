@@ -5,17 +5,17 @@
 # *
 
 # user settings
-echo '\n# user settings' >> ~/.zshenv
-echo 'export REPOS_HOME="${HOME}/Repos"' >> ~/.zshenv
-echo 'export JUPYTER_HOME="${HOME}/.jupyter"' >> ~/.zshenv
+echo '\n# user settings' >> ~/.zshrc
+echo 'export REPOS_HOME="${HOME}/Repos"' >> ~/.zshrc
+echo 'export JUPYTER_HOME="${HOME}/.jupyter"' >> ~/.zshrc
 
 # for neovim etc.
-echo '\n# nvim settings' >> ~/.zshenv
-echo 'export XDG_CONFIG_HOME="${HOME}/.config"' >> ~/.zshenv
+echo '\n# nvim settings' >> ~/.zshrc
+echo 'export XDG_CONFIG_HOME="${HOME}/.config"' >> ~/.zshrc
 
 # pipx
-echo '\n# pipx settings' >> ~/.zshenv
-echo 'export PATH="${HOME}/.local/bin:${PATH}"' >> ~/.zshenv
+echo '\n# pipx settings' >> ~/.zshrc
+echo 'export PATH="${HOME}/.local/bin:${PATH}"' >> ~/.zshrc
 
 # **
 # aliases
