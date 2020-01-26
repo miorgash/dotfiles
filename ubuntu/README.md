@@ -35,8 +35,9 @@ $
 start instance
 
 ## local
-``bash
+```bash
 $ ssh -i ~/.ssh/${YOUR_KEY} -f -NL ${YOUR_PORT}:localhost:8888 ${USER_NAME}@${INSTANCE_IP}
+```
 
 
 ---
@@ -47,4 +48,4 @@ $ ssh -i ~/.ssh/${YOUR_KEY} -f -NL ${YOUR_PORT}:localhost:8888 ${USER_NAME}@${IN
   - https://www.datasciencebytes.com/bytes/2015/12/18/using-jupyter-notebooks-securely-on-remote-linux-machines/
   - https://qiita.com/mechamogera/items/b1bb9130273deb9426f5
 - execute tmux as a daemon
-  - 
+  - coming soon
