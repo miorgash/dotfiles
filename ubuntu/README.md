@@ -3,25 +3,26 @@
 ```bash
 $ sudo apt update && sudo apt upgrade && apt install python3.7
 $ sudo python3.7 -m pip install -U pip
-$ python3.7 -m venv ~/.venv/${venv\_name}
-$ source ~/.venv/${venv\_name}/bin/activate
-${venv\_name} $ # install all packages
-${venv\_name} $ pip install -r requirements.txt
-${venv\_name} $ 
-${venv\_name} $ # security setting
-${venv\_name} $ python3.7 -c 'from notebook.auth import passwd;print(passwd())
-${venv\_name} $ jupyter notebook --generate config
-${venv\_name} $ vim ~/.jupyter/jupyter_notebook_config.py
-${venv\_name} $ ### c.NotebookApp.notebook_dir = '/home/ubuntu/'
-${venv\_name} $ ### c.NotebookApp.password = '${YOUR_ENCRYPTED_PASSWORD}'
-${venv\_name} $ 
-${venv\_name} $ # jupyter kernel setting
-${venv\_name} $ ipython kernel install --user --name=${name} --display-name=${display\_name}
-${venv\_name} $ 
-${venv\_name} $ # visual setting
-${venv\_name} $ ln -s /home/ubuntu/dotfiles-ubuntu/custom.css /home/ubuntu/.jupyter/custom.css
-${venv\_name} $ 
-${venv\_name} $ deactivate
+$ python3.7 -m venv ~/.venv/${VENV_NAME}
+$ source ~/.venv/${VENV_NAME}/bin/activate
+${VENV_NAME} $ # install all packages
+${VENV_NAME} $ pip install -r requirements.txt
+${VENV_NAME} $ 
+${VENV_NAME} $ # security setting
+${VENV_NAME} $ python3.7 -c 'from notebook.auth import passwd;print(passwd())
+${VENV_NAME} $ ### get ${YOUR_ENCRYPTED_PASSWORD}
+${VENV_NAME} $ jupyter notebook --generate config
+${VENV_NAME} $ vim ~/.jupyter/jupyter_notebook_config.py
+${VENV_NAME} $ ### c.NotebookApp.notebook_dir = '/home/ubuntu/'
+${VENV_NAME} $ ### c.NotebookApp.password = '${YOUR_ENCRYPTED_PASSWORD}'
+${VENV_NAME} $ 
+${VENV_NAME} $ # jupyter kernel setting
+${VENV_NAME} $ ipython kernel install --user --name=${NAME} --display-name=${DISPLAY_NAME}
+${VENV_NAME} $ 
+${VENV_NAME} $ # visual setting
+${VENV_NAME} $ ln -s /home/ubuntu/dotfiles-ubuntu/custom.css /home/ubuntu/.jupyter/custom.css
+${VENV_NAME} $ 
+${VENV_NAME} $ deactivate
 $ # crontab
 $ crontab -l
 $ crontab -e
