@@ -1,7 +1,7 @@
 ## How to setup Ubuntu 18.04
 
 ```bash
-$ sudo apt update && sudo apt upgrade && sudo apt install python3.7 && sudo apt install python3-pip && sudo apt install python3-venv
+$ sudo apt update && sudo apt upgrade && sudo apt install python3.7 && sudo apt install python3-pip && sudo apt install python3.7-venv
 $ python3.7 -m pip install -U pip
 $ python3.7 -m venv ~/.venv/${VENV_NAME}
 $ source ~/.venv/${VENV_NAME}/bin/activate
@@ -9,7 +9,7 @@ ${VENV_NAME} $ # install all packages
 ${VENV_NAME} $ pip install -r requirements.txt
 ${VENV_NAME} $ 
 ${VENV_NAME} $ # security setting
-${VENV_NAME} $ python3.7 -c 'from notebook.auth import passwd;print(passwd())
+${VENV_NAME} $ python3.7 -c 'from notebook.auth import passwd;print(passwd())'
 ${VENV_NAME} $ ### get ${YOUR_ENCRYPTED_PASSWORD}
 ${VENV_NAME} $ jupyter notebook --generate config
 ${VENV_NAME} $ vim ~/.jupyter/jupyter_notebook_config.py
@@ -20,7 +20,7 @@ ${VENV_NAME} $ # jupyter kernel setting
 ${VENV_NAME} $ ipython kernel install --user --name=${NAME} --display-name=${DISPLAY_NAME}
 ${VENV_NAME} $ 
 ${VENV_NAME} $ # visual setting
-${VENV_NAME} $ ln -s /home/ubuntu/dotfiles-ubuntu/custom.css /home/ubuntu/.jupyter/custom.css
+${VENV_NAME} $ ln -s /home/ubuntu/env/dotfiles/custom.css /home/ubuntu/.jupyter/custom/custom.css
 ${VENV_NAME} $ 
 ${VENV_NAME} $ deactivate
 $ # crontab
