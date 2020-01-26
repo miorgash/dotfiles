@@ -1,206 +1,49 @@
-# ツール依存関係
+# 1. 概観
+分析開発のエコシステムは下記構成要素からなる：
 
-```
-brew
-|\_ zsh
-|\_ git
-|    \_ prezto
- \_ python3
-    |\_ venv
-    |    \_ pip
-    |        \_ jupyter
-     \_ pip
-         \_ pipx
-            |\_ jupyter
-             \_ awscli
-```
-# テーマ
-- シンプル
-- 役割分担
+- クラウド環境
+- ローカル環境
+- Python 仮想環境（クラウド・ローカル）
+- コンテナ環境
 
-# 検討の上忌避した技術
-## shell 関連
-### oh-my-zsh
-- オーバースペックのため忌避
+クラウド環境・ローカル環境それぞれで，Python 仮想環境・コンテナ環境を利用する．
 
-## Python 関連
-### pyenv
-- Docker で済む
-- Docker で済むのに生の Python をラップするものの仕様を理解する手間がもったいない
+# 2. クラウド・ローカル共通の基本方針
+## 2.1. １ホストにつき１つの Python インタプリタ
+一つのホストマシンの責務は一つであるべきであり，それゆえPython のバージョンは責務に最適なもの一つであればよい．よって pyenv/conda 等を用いて，１ホストで複数のインタプリタを切替えることはしない．
 
-### pipenv
-- 開発が止まっている．
+## 2.2. １ホストにつき複数の仮想環境
+環境構築に関わる試行錯誤を効率よく行い，かつ環境をクリーンに保つため，venv, virtualenv などで仮想環境を構築し用いる．
 
-### poetry
-- よさそうだが分析目的にはオーバースペック．
+# 3. ローカル環境
+mac ローカルの環境の目的は２つ
 
-### pipx
-- Python 製非 Python モジュールのアプリケーションを管理．
-- 仕様上 PATH において常に優先される必要があるが，他の venv への切替時はそちらが優先されてしまう．
-- モジュール／非モジュールの別が明確でないパッケージが一部存在する；整合性が言語の規格によって保証されていない．
+1. 小規模データの処理
+1. Python モジュールの試験利用
+1. サービスの開発
 
-# はじめに；zsh の設定について
-## インストール・セットアップ
-- zsh は brew でインストール
-- 設定は prezto を使う．
+## 3.1. 小規模データの処理
+virtualenv/venv により構築した仮想環境で，小規模なデータの処理を行う．
 
-## 開発環境における役割
-- there're login/non-login shell attributes and interective/non-interactive attributes.
+## 3.2. Python モジュールの試験利用
+virtualenv/venv により仮想環境を作成し，利用を試す．
 
-| \- | login | non-login |
-| -: | :-: | :-: |
-| interactive | env > profile > rc > login | env > rc |
-| non-interactive | env > profile > login | env |
+## 3.3. サービスの開発
+Docker コンテナ上に必要なモジュールを梱包し開発する．完了後クラウドにてテスト・運用開始する．
 
-*[The Z Shell Manual](http://zsh.sourceforge.net/Doc/zsh_a4.pdf)*
+# 4. クラウド環境の利用方針
+クラウド環境の目的は３つ
 
-operation ごとの結果
+1. 大規模データの処理
+1. Python 新バージョンの試験利用
+1. サービスの運用
 
-| operation      | login shell | interective shell | env | profile | rc | login |
-| - | :-: | :-: | :-: | :-: | :-: | :-: |
-| start terminal |         yes |    yes               | ☺︎ | ☺︎ | ☺︎ | ☺︎ |
-| `tmux new`     |         yes |    yes               | ☺︎ | ☺︎ | ☺︎ | ☺︎ |
-| `zsh`          |         no  |    yes               | ☺︎ | - | ☺︎ | - |
-| `su`           |         no  |    yes               | ☺︎ | - | ☺︎ | - |
-| execute shell script |   no    |  no             | ☺︎ | - | - | - |
-| `ssh`          |             |                   | ? | ? | ? | ? |
-| `source activate` in venv |  |                     | - | - | - | - |
+## 4.1. 大規模データの処理
+virtualenv/venv により構築した仮想環境で，ローカルでは扱えない大規模データの処理を行う．
 
-# パッケージ管理
-## brew
-非 Python 製アプリケーションを管理．
+## 4.2. Python 新バージョンの試験利用
+クラウド等の環境で試しに利用してみる．
+支障がなければ brew/apt/yum などを用いてローカル環境に導入する．
 
-## git
-pipx, brew に無いものを管理．
-
-## curl, wget ほか
-pipx, brew, git に無いものを管理．
-
-## pip3@python3
-pipx を管理．
-
-## pip@venv
-Python モジュールを管理．
-
-
-# インタプリタ・ipython カーネル
-## brew
-Python3 系を 1 つだけインストールする．
-インタプリタはこの Python3 のみ．
-mac 標準の Python2 はシステム利用．  
-ほかの Python3 は必要に応じて Docker やクラウドで利用．
-
-## venv
-Python3 系の venv で仮想環境をつくる．  
-```sh
-$ python3 -m venv ~/.venv/${venv_name}
-```
-
-## ipython
-```sh
-$ # venv_name と kernel_name は一緒にしておくとわかりやすい
-$ source ~/.venv/${venv_name}/activate
-$ ipython kernel install --user --name=${kernel_name} --display-name=${kernel_name}
-```
-
-
-# 開発環境
-## neovim
-- brew でインストールする．
-
-## jupyter
-- 関連パッケージ；Python3, venv それぞれでインストール（pipx による共通化は執筆時点では見送り）
-
-| package | description | 
-| - | - |
-| jupyter | 本体 |
-| jupyter-contrib-nbextensions | 複数の nbextensions をまとめて導入できるコレクション |
-| jupyter-nbextensions-configurator | ブラウザ画面で各 nbextensions の設定を行えるようにするツール |
-
-- 前述 ipython コマンドで追加したカーネルを NoteBook 作成時・作成後に選択できる．
-- jupyter のインストール先に関わらず以下の設定が適用される；venv の jupyter 実行時でも以下挙動は変わらない
-  - ~/.jupyter/custom/custom.css を参照する．
-  - nbextenstion は？
-
-# other
-- 分析者個人の開発環境でインタプリタを切り替える場合があるとすれば，安定版と最新版を使い分ける時．
-
-
----
-bak
-# What for
-- アプリケーションのインストールとセットアップ
-
-# Rules
-- アプリケーションごとにインストールとセットアップをまとめて実行可能な状態にする
-- 依存関係はどこかで定義
-- パッケージ・環境管理用アプリケーション
-  - homebrew
-  - git
-  - pipx
-  - pyenv
-  - pip
-- 分析・開発用アプリケーション
-  - zsh
-  - tmux
-  - neovim
-  - Python
-  - jupyter
-  - mecab
-  - neologd
-- 共通シェル
-  - install.sh: パッケージ・環境管理用アプリケーションを用いた，パッケージ・インタプリタのインストール
-  - configure.sh: 分析・開発用アプリケーションの設定
-
-# Structure
-```zsh
-.
- \_ $OS_DISTRIB
-    |\_ brew
-    |    \_ install.sh
-    |\_ git
-    |   |\_ setup.sh
-    |    \_ $CONFIG
-    |\_ $APP
-    |   |\_ setup.sh
-    |    \_ $CONFIG \_ ...
-```
-
-# Installation Dependency
-1. apps installation
-  1. install brew
-  2. install apps by brew (including git, curl, pip@python3, pyenv)
-  3. install apps by git (including prezto)
-  4. install apps by pip@python3 (only pipx)
-  5. install apps by pipx(including jupyter, awscli)
-  5. install apps by curl (including poetry)
-2. shell configuration
-  1. install zsh-dotfiles by prezto
-  2. configure zsh-dotfiles
-3. apps configuration
-  1. tmux
-  2. neovim
-  3. shared python
-    1. configure jupyter notebook
-  3. project python
-    1. install python by pyenv
-    2. create virtual-python-environment by venv or poetry
-    3. install modules by pip
-
-```
-brew
-|\_ git
-|   |\_ $tools
-|    \_ prezto
- \_ pip@python3
-     \_ pipx
-        |\_ jupyter
-         \_ awscli
-```
-
-# Caution
-- path: pipx > usr/local/bin
-
-# Idea
-- Python Interpreter のバージョン管理は行わない．pyenv を用いることで可能だが，シンプルさにかけるため．最新の 3 系のみ保持する．（3.8 別バージョン使いたくなったら docker とか使う）
-- venv で仮想環境を管理する．公式で外部アプリケーションとの連携が容易なため．
+## 4.3. サービスの運用
+ローカルで開発した Docker コンテナをデプロイし，テスト・運用する．
