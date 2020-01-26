@@ -1,12 +1,28 @@
 ## How to setup Ubuntu 18.04
 
 ```bash
-$ sudo apt update && sudo apt upgrade && sudo apt install python3.7 && sudo apt install python3-pip && sudo apt install python3.7-venv
+$ # python
+$ sudo apt update && sudo apt upgrade && sudo apt install python3.7 && sudo apt install python3.7-dev && sudo apt install python3-pip && sudo apt install python3.7-venv
 $ python3.7 -m pip install -U pip
 $ python3.7 -m venv ~/.venv/${VENV_NAME}
+$ 
+$ # MeCab
+$ sudo apt install mecab libmecab-dev mecab-ipadic-utf8
+$ sudo apt install unidic-mecab
+$ sudo update-alternatives --config mecab-dictionary
+$ sudo apt install git make curl xz-utils file unzip
+$ cd /tmp
+$ git clone --depth 1 https://github.com/neologd/mecab-unidic-neologd
+$ cd mecab-unidic-neologd
+$ ./bin/install-mecab-unidic-neologd -n
+$ 
+$ # venv
 $ source ~/.venv/${VENV_NAME}/bin/activate
 ${VENV_NAME} $ # install all packages
 ${VENV_NAME} $ pip install -r requirements.txt
+${VENV_NAME} $ 
+${VENV_NAME} $ # nessesary packages
+${VENV_NAME} $ pip install jupyter ipython mecab-python3
 ${VENV_NAME} $ 
 ${VENV_NAME} $ # security setting
 ${VENV_NAME} $ python3.7 -c 'from notebook.auth import passwd;print(passwd())'
@@ -49,3 +65,6 @@ $ ssh -i ~/.ssh/${YOUR_KEY} -f -NL ${YOUR_PORT}:localhost:8888 ${USER_NAME}@${IN
   - https://qiita.com/mechamogera/items/b1bb9130273deb9426f5
 - execute tmux as a daemon
   - coming soon
+
+- MeCab on Ubuntu 18.04
+  - https://qiita.com/SUZUKI_Masaya/items/685000d569452585210c
