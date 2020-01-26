@@ -23,11 +23,9 @@ ${VENV_NAME} $ # visual setting
 ${VENV_NAME} $ ln -s /home/ubuntu/env/dotfiles/custom.css /home/ubuntu/.jupyter/custom/custom.css
 ${VENV_NAME} $ 
 ${VENV_NAME} $ deactivate
-$ # crontab
-$ crontab -l
-$ crontab -e
-$ ### @reboot tmux new-session -d -s notebook 'jupyter notebook --no-browser'
-$ crontab -l
+$ # TODO: move into reboot setting @crontab
+$ source ~/.venv/${VENV_NAME}/bin/activate
+$ tmux new-session -d -s notebook 'jupyter notebook --no-browser'
 ```
 
 ## How to use
