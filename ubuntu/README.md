@@ -27,22 +27,21 @@ $ # crontab
 $ crontab -l
 $ crontab -e
 $ ### @reboot tmux new-session -d -s notebook 'jupyter notebook --no-browser'
+$ crontab -l
 ```
 
 # How to use
-## ubuntu 
+## host
 start instance
 
-## local
+## client
 1. setup ssh tunnel.
 ```bash
 $ ssh -i ~/.ssh/${YOUR_KEY} -f -NL ${YOUR_PORT}:localhost:8888 ${USER_NAME}@${INSTANCE_IP}
 ```
-
 1. open browser and access `http://localhost:${YOUR_PORT}`, type the password.
 
 
----
 # References
 - jupyter in ec2
   - https://qiita.com/t12968yy/items/b6c14f48638060916824
