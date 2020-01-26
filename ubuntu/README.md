@@ -20,6 +20,7 @@ ${VENV_NAME} $ # jupyter kernel setting
 ${VENV_NAME} $ ipython kernel install --user --name=${NAME} --display-name=${DISPLAY_NAME}
 ${VENV_NAME} $ 
 ${VENV_NAME} $ # visual setting
+${VENV_NAME} $ mkdir ~/.jupyter/custom
 ${VENV_NAME} $ ln -s /home/ubuntu/env/dotfiles/custom.css /home/ubuntu/.jupyter/custom/custom.css
 ${VENV_NAME} $ 
 ${VENV_NAME} $ deactivate
