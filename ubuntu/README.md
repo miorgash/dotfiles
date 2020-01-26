@@ -1,4 +1,4 @@
-# How to setup Ubuntu 18.04
+## How to setup Ubuntu 18.04
 
 ```bash
 $ sudo apt update && sudo apt upgrade && apt install python3.7
@@ -30,11 +30,11 @@ $ ### @reboot tmux new-session -d -s notebook 'jupyter notebook --no-browser'
 $ crontab -l
 ```
 
-# How to use
-## host
+## How to use
+### host
 start instance
 
-## client
+### client
 1. setup ssh tunnel.
 ```bash
 $ ssh -i ~/.ssh/${YOUR_KEY} -f -NL ${YOUR_PORT}:localhost:8888 ${USER_NAME}@${INSTANCE_IP}
@@ -42,7 +42,7 @@ $ ssh -i ~/.ssh/${YOUR_KEY} -f -NL ${YOUR_PORT}:localhost:8888 ${USER_NAME}@${IN
 1. open browser and access `http://localhost:${YOUR_PORT}`, type the password.
 
 
-# References
+## References
 - jupyter in ec2
   - https://qiita.com/t12968yy/items/b6c14f48638060916824
 - ssh tunnel
