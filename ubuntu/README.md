@@ -26,8 +26,7 @@ ${VENV_NAME} $ deactivate
 $ # crontab
 $ crontab -l
 $ crontab -e
-$ # @reboot tmux new-session -d -s notebook 'jupyter notebook --no-browser'
-$ 
+$ ### @reboot tmux new-session -d -s notebook 'jupyter notebook --no-browser'
 ```
 
 # How to use
@@ -35,9 +34,12 @@ $
 start instance
 
 ## local
+1. setup ssh tunnel.
 ```bash
 $ ssh -i ~/.ssh/${YOUR_KEY} -f -NL ${YOUR_PORT}:localhost:8888 ${USER_NAME}@${INSTANCE_IP}
 ```
+
+1. open browser and access `http://localhost:${YOUR_PORT}`, type the password.
 
 
 ---
