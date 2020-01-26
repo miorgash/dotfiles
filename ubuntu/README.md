@@ -1,7 +1,7 @@
 ## How to setup Ubuntu 18.04
 
 ```bash
-$ sudo apt update && sudo apt upgrade && apt install python3.7
+$ sudo apt update && sudo apt upgrade && sudo apt install python3.7
 $ sudo python3.7 -m pip install -U pip
 $ python3.7 -m venv ~/.venv/${VENV_NAME}
 $ source ~/.venv/${VENV_NAME}/bin/activate
