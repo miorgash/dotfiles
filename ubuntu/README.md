@@ -24,14 +24,17 @@ ${VENV_NAME} $ mkdir ~/.jupyter/custom
 ${VENV_NAME} $ ln -s /home/ubuntu/env/dotfiles/custom.css /home/ubuntu/.jupyter/custom/custom.css
 ${VENV_NAME} $ 
 ${VENV_NAME} $ deactivate
-$ # TODO: move into reboot setting @crontab
-$ source ~/.venv/${VENV_NAME}/bin/activate
-$ tmux new-session -d -s notebook 'jupyter notebook --no-browser'
 ```
 
 ## How to use
 ### host
-start instance
+start instance and execute:
+
+```
+$ # TODO: move this to @reboot
+$ source ~/.venv/${VENV_NAME}/bin/activate
+$ tmux new-session -d -s notebook 'jupyter notebook --no-browser'
+```
 
 ### client
 1. setup ssh tunnel.
