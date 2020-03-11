@@ -8,9 +8,10 @@ keras-bert==0.81.0
 keras-self-attention==0.41.0
 matplotlib==3.1.2
 mecab-python3==0.996.3
-mojimoji==0.0.9
+mojimoji==0.0.9.post0
 numpy==1.18.1
 pandas==0.25.3
+pandas-profiling==2.5.0
 pathlib==1.0.1
 plotly==4.5.0
 scikit-learn==0.22.1
