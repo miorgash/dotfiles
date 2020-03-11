@@ -19,6 +19,7 @@ seaborn==0.10.0
 sklearn==0.0
 spacy==2.2.3
 tensorflow==2.0.0b1
+tensorflow-gpu==1.14.0
 torch==1.4.0
 torchtext==0.5.0
 tqdm==4.42.0

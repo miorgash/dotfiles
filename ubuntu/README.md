@@ -32,6 +32,7 @@ $ # python
 $ sudo apt update && sudo apt upgrade && sudo apt install python3.7 && sudo apt install python3.7-dev && sudo apt install python3-pip && sudo apt install python3.7-venv
 $ python3.7 -m pip install -U pip
 $ python3.7 -m venv ~/.venv/${VENV_NAME}
+$ # エイリアス等を設定（ubuntu/add-python-setting-to-zshrc.sh）
 $ 
 $ # MeCab
 $ sudo apt install mecab libmecab-dev mecab-ipadic-utf8
@@ -45,6 +46,8 @@ $ ./bin/install-mecab-unidic-neologd -n
 $ 
 $ # venv
 $ source ~/.venv/${VENV_NAME}/bin/activate
+${VENV_NAME} $ # required by mecab-python3
+${VENV_NAME} $ sudo apt install swig
 ${VENV_NAME} $ # install all packages
 ${VENV_NAME} $ pip install -r requirements.txt
 ${VENV_NAME} $ 
