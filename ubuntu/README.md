@@ -29,7 +29,7 @@ $ - AWS 公式イメージを利用
 $ - 非 GPU インスタンスとの使い分け方針は検討
 $ 
 $ # python
-$ sudo apt update && sudo apt upgrade && sudo apt install python3.7 && sudo apt install python3.7-dev && sudo apt install python3-pip && sudo apt install python3.7-venv
+$ sudo apt update -y && sudo apt upgrade -y && sudo apt install python3.7 -y && sudo apt install python3.7-dev -y && sudo apt install python3-pip -y && sudo apt install python3.7-venv -y
 $ python3.7 -m pip install -U pip
 $ python3.7 -m venv ~/.venv/${VENV_NAME}
 $ # エイリアス等を設定（ubuntu/add-python-setting-to-zshrc.sh）
