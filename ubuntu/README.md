@@ -1,5 +1,21 @@
 ## How to setup Ubuntu 18.04
 
+- GPU
+- Docker
+- nvim
+- tmux
+
+### GPU
+https://qiita.com/hoto17296/items/80ba9c23416991757ab7
+
+```bash
+$ sudo apt update
+$ sudo apt install -y nvidia-384
+$ sudo reboot
+```
+
+---
+bak
 ```bash
 $ # python
 $ sudo apt update && sudo apt upgrade && sudo apt install python3.7 && sudo apt install python3.7-dev && sudo apt install python3-pip && sudo apt install python3.7-venv
