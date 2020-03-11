@@ -1,38 +1,33 @@
-## How to setup Ubuntu 18.04
+# How to setup Ubuntu 18.04
 
 ```bash
-sudo su 
-sudo apt update
-
-# zsh
-sudo apt install zsh
-
-# prezto
-# 1. オフィシャル README にしたがってインストール＆ログインシェルに設定: https://github.com/sorin-ionescu/prezto
-# 2. .zshrc で prompt 設定を保存（prompt $name だと保存されない）: https://qiita.com/notakaos/items/89057f2119655ab9f920
-
-# tmux
-ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
-
-# nvim
-sudo apt install neovim
-# zshrc を設定（add-neovim-setting-to-zshrc.sh）
-# colorscheme, vim-plug を設定（setup-neovim.sh; make sure that you have set XGD_CONFIG_HOME）
-
-
-# Docker & docker-compose
-# 公式 Docs にしたがってインストール
-# - Docker: https://docs.docker.com/install/linux/docker-ce/ubuntu/#prerequisites
-# - docker-compose: https://docs.docker.com/compose/install/#install-compose
-```
-
-### GPU
-- AWS 公式イメージを利用
-- 非 GPU インスタンスとの使い分け方針は検討
-
----
-bak
-```bash
+$ sudo apt update
+$ 
+$ # zsh
+$ sudo apt install zsh
+$ 
+$ # prezto
+$ # 1. オフィシャル README にしたがってインストール＆ログインシェルに設定: https://github.com/sorin-ionescu/prezto
+$ # 2. .zshrc で prompt 設定を保存（prompt $name だと保存されない）: https://qiita.com/notakaos/items/89057f2119655ab9f920
+$ 
+$ # tmux
+$ ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
+$ 
+$ # nvim
+$ sudo apt install neovim
+$ # zshrc を設定（add-neovim-setting-to-zshrc.sh）
+$ # colorscheme, vim-plug を設定（setup-neovim.sh; make sure that you have set XGD_CONFIG_HOME）
+$ 
+$ 
+$ # Docker & docker-compose
+$ # 公式 Docs にしたがってインストール
+$ # - Docker: https://docs.docker.com/install/linux/docker-ce/ubuntu/#prerequisites
+$ # - docker-compose: https://docs.docker.com/compose/install/#install-compose
+$ 
+$ # GPU
+$ - AWS 公式イメージを利用
+$ - 非 GPU インスタンスとの使い分け方針は検討
+$ 
 $ # python
 $ sudo apt update && sudo apt upgrade && sudo apt install python3.7 && sudo apt install python3.7-dev && sudo apt install python3-pip && sudo apt install python3.7-venv
 $ python3.7 -m pip install -U pip
@@ -74,7 +69,7 @@ ${VENV_NAME} $
 ${VENV_NAME} $ deactivate
 ```
 
-## How to use
+## How to use notebook
 ### host
 start instance and execute:
 
