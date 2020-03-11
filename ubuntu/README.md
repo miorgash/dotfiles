@@ -1,18 +1,34 @@
 ## How to setup Ubuntu 18.04
 
-- GPU
-- Docker
-- nvim
-- tmux
+```bash
+sudo su 
+sudo apt update
+
+# zsh
+sudo apt install zsh
+
+# prezto
+# 1. オフィシャル README にしたがってインストール＆ログインシェルに設定: https://github.com/sorin-ionescu/prezto
+# 2. .zshrc で prompt 設定を保存（prompt $name だと保存されない）: https://qiita.com/notakaos/items/89057f2119655ab9f920
+
+# tmux
+ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
+
+# nvim
+sudo apt install neovim
+# zshrc を設定（add-neovim-setting-to-zshrc.sh）
+# colorscheme, vim-plug を設定（setup-neovim.sh; make sure that you have set XGD_CONFIG_HOME）
+
+
+# Docker & docker-compose
+# 公式 Docs にしたがってインストール
+# - Docker: https://docs.docker.com/install/linux/docker-ce/ubuntu/#prerequisites
+# - docker-compose: https://docs.docker.com/compose/install/#install-compose
+```
 
 ### GPU
-https://qiita.com/hoto17296/items/80ba9c23416991757ab7
-
-```bash
-$ sudo apt update
-$ sudo apt install -y nvidia-384
-$ sudo reboot
-```
+- AWS 公式イメージを利用
+- 非 GPU インスタンスとの使い分け方針は検討
 
 ---
 bak
