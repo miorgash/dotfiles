@@ -1,7 +1,16 @@
 # How to setup Ubuntu 18.04
 
 ```bash
+$ # setpassword
+$ sudo su
+# passwd ubuntu
+# exit
+$ 
+$ # create ssh key
+$ ssh-keygen
+$ 
 $ sudo apt update
+$ sudo apt upgrade
 $ 
 $ # zsh
 $ sudo apt install zsh
@@ -26,7 +35,6 @@ $ # - docker-compose: https://docs.docker.com/compose/install/#install-compose
 $ 
 $ # Samba
 $ sudo apt install cifs-utils -y
-$ 
 $ 
 $ # GPU
 $ - AWS 公式イメージを利用
