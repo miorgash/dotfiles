@@ -24,8 +24,12 @@ $ ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
 $ 
 $ # nvim
 $ sudo apt install neovim
+$ mkdir ~/.config
 $ # zshrc を設定（add-neovim-setting-to-zshrc.sh）
+$ exit
+$ # 再度 login
 $ # colorscheme, vim-plug を設定（setup-neovim.sh; make sure that you have set XGD_CONFIG_HOME）
+$ # :VimplugInstall
 $ 
 $ 
 $ # Docker & docker-compose
