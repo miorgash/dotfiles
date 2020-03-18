@@ -51,14 +51,13 @@ $ python3.7 -m venv ~/.venv/${VENV_NAME}
 $ # エイリアス等を設定（ubuntu/add-python-setting-to-zshrc.sh）
 $ 
 $ # MeCab
-$ sudo apt install mecab libmecab-dev mecab-ipadic-utf8
-$ sudo apt install unidic-mecab
+$ sudo apt install mecab libmecab-dev mecab-ipadic-utf8 -y
+$ sudo apt install unidic-mecab -y
 $ sudo update-alternatives --config mecab-dictionary
-$ sudo apt install git make curl xz-utils file unzip
-$ cd /tmp
-$ git clone --depth 1 https://github.com/neologd/mecab-unidic-neologd
-$ cd mecab-unidic-neologd
-$ ./bin/install-mecab-unidic-neologd -n
+$ sudo apt install git make curl xz-utils file unzip -y
+$ git clone --depth 1 https://github.com/neologd/mecab-unidic-neologd /tmp/mecab-unidic-neologd
+$ cd /tmp/mecab-unidic-neologd
+$ ./bin/install-mecab-unidic-neologd -n -y
 $ 
 $ # venv
 $ source ~/.venv/${VENV_NAME}/bin/activate
@@ -89,6 +88,11 @@ ${VENV_NAME} $ mkdir ~/.jupyter/custom
 ${VENV_NAME} $ ln -s /home/ubuntu/env/dotfiles/custom.css /home/ubuntu/.jupyter/custom/custom.css
 ${VENV_NAME} $ 
 ${VENV_NAME} $ deactivate
+```
+
+## mecab dict location
+```
+$ ls /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-unidic-neologd
 ```
 
 ## How to use notebook
