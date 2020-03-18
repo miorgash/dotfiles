@@ -54,6 +54,7 @@ ${VENV_NAME} $ # required by mecab-python3
 ${VENV_NAME} $ sudo apt install swig
 ${VENV_NAME} $ # required by some packages
 ${VENV_NAME} $ pip install wheel
+${VENV_NAME} $ pip install -U setuptools
 ${VENV_NAME} $ # install all packages
 ${VENV_NAME} $ pip install -r requirements.txt
 ${VENV_NAME} $ 
