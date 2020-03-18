@@ -24,6 +24,10 @@ $ # 公式 Docs にしたがってインストール
 $ # - Docker: https://docs.docker.com/install/linux/docker-ce/ubuntu/#prerequisites
 $ # - docker-compose: https://docs.docker.com/compose/install/#install-compose
 $ 
+$ # Samba
+$ sudo apt install cifs-utils -y
+$ 
+$ 
 $ # GPU
 $ - AWS 公式イメージを利用
 $ - 非 GPU インスタンスとの使い分け方針は検討
