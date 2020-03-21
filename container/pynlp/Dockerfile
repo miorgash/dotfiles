@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 RUN : "essential" && \
     apt update -y && \
     apt upgrade -y && \
-    apt install sudo apt-utils -y && \
+    apt install sudo apt-utils vim -y && \
     : "python" && \
     apt install python3.7 python3.7-dev python3-pip python3.7-venv -y && \
     python3.7 -m pip install -U pip && \
@@ -16,7 +16,7 @@ RUN : "essential" && \
     git clone --depth 1 https://github.com/neologd/mecab-unidic-neologd /tmp/mecab-unidic-neologd
 WORKDIR /tmp/mecab-unidic-neologd
 RUN ./bin/install-mecab-unidic-neologd -n -y
-WORKDIR ~
+WORKDIR /root/
 RUN : "required by mecab-python3, Tensorflow etc." && \
     apt install swig -y && \
     python3.7 -m pip install wheel && \
