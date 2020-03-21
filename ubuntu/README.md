@@ -96,10 +96,9 @@ ${VENV_NAME} $ deactivate
 $ # jupyter setup
 $ python3.7 -c 'from notebook.auth import passwd;print(passwd())'
 $ # container
-$ # TODO: add volume setting
-$ sudo docker run -itd -p 9999:8888 -v /home/ubuntu/:/root/ --name nlp miorgash/ubuntu-nlp:latest
+$ sudo docker run -itd -p 9999:8888 -v /home/ubuntu/:/root/ --name pynlp miorgash/pynlp:latest
 $ # ssh tunnel
-$ ssh -f -NL 9999:localhost:8888 ubuntu@ubuntu-mirror
+$ ssh -f -NL 9999:localhost:8888 ubuntu@ubuntu
 $ # vim through ssh
 $ vim scp://${username}@${hostname}/${path_relative_from_home}
 $ vim scp://${username}@${hostname}//${path_abs}
