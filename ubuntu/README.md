@@ -97,7 +97,7 @@ $ # jupyter setup
 $ python3.7 -c 'from notebook.auth import passwd;print(passwd())'
 $ # container
 $ # TODO: add volume setting
-$ sudo docker run -itd -p 8888:8888 --name ubuntu_nlp miorgash/ubuntu-nlp
+$ sudo docker run -itd -p 9999:8888 -v /home/ubuntu/:/root/ --name nlp miorgash/ubuntu-nlp:latest
 $ # ssh tunnel
 $ ssh -f -NL 9999:localhost:8888 ubuntu@ubuntu-mirror
 $ # vim through ssh
