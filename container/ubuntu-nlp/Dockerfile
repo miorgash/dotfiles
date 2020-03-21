@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 RUN : "essential" && \
     apt update -y && \
     apt upgrade -y && \
-    apt install sudo -y && \
+    apt install sudo apt-utils -y && \
     : "python" && \
     apt install python3.7 python3.7-dev python3-pip python3.7-venv -y && \
     python3.7 -m pip install -U pip && \
@@ -19,14 +19,15 @@ RUN ./bin/install-mecab-unidic-neologd -n -y
 WORKDIR ~
 RUN : "required by mecab-python3, Tensorflow etc." && \
     apt install swig -y && \
-    pip install wheel && \
-    pip install -U setuptools && \
+    python3.7 -m pip install wheel && \
+    python3.7 -m pip install -U setuptools && \
     : "install all packages" && \
     git clone https://github.com/miorgash/env.git ~/env && \
-    pip install -r ~/env/ubuntu/requirements.txt && \
-    ############### ここから >>>
-    pip install jupyter ipython mecab-python3 && \
-    : "visual setting" && \
+    python3.7 -m pip install -r ~/env/ubuntu/requirements.txt && \
+    python3.7 -m pip install jupyter ipython mecab-python3 && \
+    : "jupyter setting" && \
     mkdir -p ~/.jupyter/custom && \
-    ln -s /home/ubuntu/env/dotfiles/custom.css /home/ubuntu/.jupyter/custom/custom.css
-CMD ["jupyter", "notebook", "--no-browser", "-p", "8888"]
+    ln -s /root/env/dotfiles/custom.css /root/.jupyter/custom/custom.css && \
+    python3.7 -m jupyter notebook --generate-config
+ENTRYPOINT ["jupyter", "notebook"]
+CMD ["--no-browser", "--port", "8888", "--ip", "0.0.0.0", "--allow-root"]

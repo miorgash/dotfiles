@@ -90,6 +90,21 @@ ${VENV_NAME} $
 ${VENV_NAME} $ deactivate
 ```
 
+## Setup
+
+```bash
+$ # jupyter setup
+$ python3.7 -c 'from notebook.auth import passwd;print(passwd())'
+$ # container
+$ # TODO: add volume setting
+$ sudo docker run -itd -p 8888:8888 --name ubuntu_nlp miorgash/ubuntu-nlp
+$ # ssh tunnel
+$ ssh -f -NL 9999:localhost:8888 ubuntu@ubuntu-mirror
+$ # vim through ssh
+$ vim scp://${username}@${hostname}/${path_relative_from_home}
+$ vim scp://${username}@${hostname}//${path_abs}
+```
+
 ## mecab dict location
 ```
 $ ls /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-unidic-neologd
