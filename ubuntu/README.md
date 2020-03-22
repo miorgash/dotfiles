@@ -95,6 +95,9 @@ ${VENV_NAME} $ deactivate
 ```bash
 $ # jupyter setup
 $ python3.7 -c 'from notebook.auth import passwd;print(passwd())'
+$ # in $home/.jupyter/jupyter_notebook_config.py
+# # c.NotebookApp.password = '$hashed_password'
+$ # c.NotebookApp.notebook_dir = '/mnt/host'
 $ # container
 $ sudo docker run -itd -p 8888:8888 -v /home/ubuntu/:/mnt/host --name pynlp miorgash/pynlp:latest
 $ # ssh tunnel
