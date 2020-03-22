@@ -96,7 +96,7 @@ ${VENV_NAME} $ deactivate
 $ # jupyter setup
 $ python3.7 -c 'from notebook.auth import passwd;print(passwd())'
 $ # container
-$ sudo docker run -itd -p 9999:8888 -v /home/ubuntu/:/root/ --name pynlp miorgash/pynlp:latest
+$ sudo docker run -itd -p 8888:8888 -v /home/ubuntu/:/mnt/host --name pynlp miorgash/pynlp:latest
 $ # ssh tunnel
 $ ssh -f -NL 9999:localhost:8888 ubuntu@ubuntu
 $ # vim through ssh
