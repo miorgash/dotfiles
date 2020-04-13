@@ -83,14 +83,16 @@ $ ./bin/install-mecab-unidic-neologd -n -y
 ## Setup
 
 ```bash
+$ # container
+$ sudo docker run -itd -p 8888:8888 -v /mnt/pynlp:/var/assets --name pynlp miorgash/pynlp:latest
+$ sudo docker run --gpus all,driver=nvidia,capabilities=compute -itd -p 8888:8888 -v /mnt/pynlp:/var/assets --name pynlp miorgash/pynlp:latest
+$ 
 $ # jupyter setup
 $ python3.7 -c 'from notebook.auth import passwd;print(passwd())'
-$ # in $home/.jupyter/jupyter_notebook_config.py
-# # c.NotebookApp.password = '$hashed_password'
-$ # c.NotebookApp.notebook_dir = '/mnt/host'
-$ # container
-$ sudo docker run -itd -p 8888:8888 -v /home/ubuntu/:/mnt/host --name pynlp miorgash/pynlp:latest
-$ sudo docker run --gpus all,driver=nvidia,capabilities=compute -itd -p 8888:8888 -v /home/ubuntu/:/mnt/host --name pynlp miorgash/pynlp:latest
+$ # $home/.jupyter/jupyter_notebook_config.py
+$ # c.NotebookApp.password = '$hashed_password'
+$ # c.NotebookApp.notebook_dir = '/var/assets'
+$
 $ # ssh tunnel
 $ ssh -f -NL 9999:localhost:8888 ubuntu@ubuntu
 $ # vim through ssh
