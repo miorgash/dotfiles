@@ -9,27 +9,30 @@ $
 $ # create ssh key
 $ ssh-keygen
 $ 
-$ sudo apt update
-$ sudo apt upgrade
+$ sudo apt update & sudo apt upgrade
 $ 
 $ # zsh
-$ sudo apt install zsh
+$ sudo apt install zsh -y
 $ 
 $ # prezto
 $ # 1. オフィシャル README にしたがってインストール＆ログインシェルに設定: https://github.com/sorin-ionescu/prezto
 $ # 2. .zshrc で prompt 設定を保存（prompt $name だと保存されない）: https://qiita.com/notakaos/items/89057f2119655ab9f920
 $ 
+$ # Personal settings
+$ # repository
+$ git clone https://github.com/miorgash/env.git
+$ 
 $ # tmux
 $ ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
 $ 
 $ # nvim
-$ sudo apt install neovim
+$ sudo apt install neovim -y
 $ mkdir ~/.config
-$ # zshrc を設定（add-neovim-setting-to-zshrc.sh）
-$ exit
-$ # 再度 login
-$ # colorscheme, vim-plug を設定（setup-neovim.sh; make sure that you have set XGD_CONFIG_HOME）
-$ # :VimplugInstall
+$ sh env/ubuntu/add-neovim-setting-to-zshrc.sh # zshrc を設定
+$ exit # 設定反映のため；再度ログイン
+$ env # XGD_CONFIG_HOME 設定を確認
+$ sh env/ubuntu/setup-neovim.sh # colorscheme, vim-plug を設定
+$ # :PlugInstall
 $ 
 $ 
 $ # Docker & docker-compose
@@ -47,8 +50,8 @@ $
 $ # python
 $ sudo apt update -y && sudo apt upgrade -y && sudo apt install python3.7 -y && sudo apt install python3.7-dev -y && sudo apt install python3-pip -y && sudo apt install python3.7-venv -y
 $ python3.7 -m pip install -U pip
-$ python3.7 -m venv ~/.venv/${VENV_NAME}
-$ # エイリアス等を設定（ubuntu/add-python-setting-to-zshrc.sh）
+$ # python3.7 -m venv ~/.venv/${VENV_NAME}
+$ sh env/ubuntu/add-python-setting-to-zshrc.sh # エイリアス等を設定
 $ 
 $ # MeCab
 $ sudo apt install mecab libmecab-dev mecab-ipadic-utf8 -y
@@ -59,6 +62,7 @@ $ git clone --depth 1 https://github.com/neologd/mecab-unidic-neologd /tmp/mecab
 $ cd /tmp/mecab-unidic-neologd
 $ ./bin/install-mecab-unidic-neologd -n -y
 $ 
+$ # bak
 $ # venv
 $ source ~/.venv/${VENV_NAME}/bin/activate
 ${VENV_NAME} $ # required by mecab-python3
