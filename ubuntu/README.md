@@ -44,8 +44,25 @@ $ # Samba
 $ sudo apt install cifs-utils -y
 $ 
 $ # GPU
-$ - AWS 公式イメージを利用
-$ - 非 GPU インスタンスとの使い分け方針は検討
+$ # AWS 公式イメージを利用
+$ # 非 GPU インスタンスとの使い分け方針は検討
+$ # https://qiita.com/ttsubo/items/c97173e1f04db3cbaeda
+$ 
+$ # /etc/modprobe.d/blacklost-nouveau.conf
+$ # blacklist nouveau
+$ # options nouveau modeset=0
+$ sudo update-initramfs -u # initramfs 再構築
+$ sudo reboot
+$ # install nvidia driver
+$ sudo apt update && sudo apt install nvidia-driver-430 -y && sudo apt install nvidia-cuda-toolkit -y
+$ # nvidia driver インストール確認
+$ lspci -vv|grep -i nvidia
+$ # nvidia-smi コマンド動作確認
+$ nvidia-smi
+$ # python からの利用確認；container 立ち上げ後，notebool/python で以下コードを実行
+$ # https://thr3a.hatenablog.com/entry/20180113/1515820265
+$ # from tensorflow.python.client import device_lib
+$ # device_lib.list_local_devices()
 $ 
 $ # python
 $ sudo apt update -y && sudo apt upgrade -y && sudo apt install python3.7 -y && sudo apt install python3.7-dev -y && sudo apt install python3-pip -y && sudo apt install python3.7-venv -y
@@ -61,37 +78,6 @@ $ sudo apt install git make curl xz-utils file unzip -y
 $ git clone --depth 1 https://github.com/neologd/mecab-unidic-neologd /tmp/mecab-unidic-neologd
 $ cd /tmp/mecab-unidic-neologd
 $ ./bin/install-mecab-unidic-neologd -n -y
-$ 
-$ # bak
-$ # venv
-$ source ~/.venv/${VENV_NAME}/bin/activate
-${VENV_NAME} $ # required by mecab-python3
-${VENV_NAME} $ sudo apt install swig
-${VENV_NAME} $ # required by some packages
-${VENV_NAME} $ pip install wheel
-${VENV_NAME} $ pip install -U setuptools
-${VENV_NAME} $ # install all packages
-${VENV_NAME} $ pip install -r requirements.txt
-${VENV_NAME} $ 
-${VENV_NAME} $ # nessesary packages
-${VENV_NAME} $ pip install jupyter ipython mecab-python3
-${VENV_NAME} $ 
-${VENV_NAME} $ # security setting
-${VENV_NAME} $ python3.7 -c 'from notebook.auth import passwd;print(passwd())'
-${VENV_NAME} $ ### get ${YOUR_ENCRYPTED_PASSWORD}
-${VENV_NAME} $ jupyter notebook --generate config
-${VENV_NAME} $ vim ~/.jupyter/jupyter_notebook_config.py
-${VENV_NAME} $ ### c.NotebookApp.notebook_dir = '/home/ubuntu/'
-${VENV_NAME} $ ### c.NotebookApp.password = '${YOUR_ENCRYPTED_PASSWORD}'
-${VENV_NAME} $ 
-${VENV_NAME} $ # jupyter kernel setting
-${VENV_NAME} $ ipython kernel install --user --name=${NAME} --display-name=${DISPLAY_NAME}
-${VENV_NAME} $ 
-${VENV_NAME} $ # visual setting
-${VENV_NAME} $ mkdir ~/.jupyter/custom
-${VENV_NAME} $ ln -s /home/ubuntu/env/dotfiles/custom.css /home/ubuntu/.jupyter/custom/custom.css
-${VENV_NAME} $ 
-${VENV_NAME} $ deactivate
 ```
 
 ## Setup
