@@ -1,0 +1,10 @@
+version: '3'
+services:
+  pynlp:
+    image: miorgash/pynlp:latest
+    container_name: pynlp
+    restart: always
+    ports:
+      - 8888:8888
+    volumes:
+      - /home/ubuntu:/mnt/host
