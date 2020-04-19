@@ -1,3 +1,4 @@
+# not working with gpu
 version: '3'
 services:
   nlp:
@@ -7,4 +8,4 @@ services:
     ports:
       - 8888:8888
     volumes:
-      - /home/ubuntu:/mnt/host
+      - /mnt/py:/var/asset
