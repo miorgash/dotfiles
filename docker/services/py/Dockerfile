@@ -23,7 +23,7 @@ RUN : "required by mecab-python3, Tensorflow etc." && \
     python3.7 -m pip install -U setuptools && \
     : "install all packages" && \
     git clone https://github.com/miorgash/env.git ~/env && \
-    python3.7 -m pip install -r ~/env/host/ubuntu/requirements.txt && \
+    python3.7 -m pip install -r ~/env/dotfiles/requirements.txt && \
     python3.7 -m pip install jupyter ipython mecab-python3 && \
     : "jupyter setting" && \
     mkdir -p ~/.jupyter/custom && \
