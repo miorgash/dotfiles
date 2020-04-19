@@ -100,37 +100,3 @@ $ vim scp://${username}@${hostname}/${path_relative_from_home}
 $ vim scp://${username}@${hostname}//${path_abs}
 ```
 
-## mecab dict location
-```
-$ ls /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-unidic-neologd
-```
-
-## How to use notebook
-### host
-start instance and execute:
-
-```
-$ # TODO: move this to @reboot
-$ source ~/.venv/${VENV_NAME}/bin/activate
-$ tmux new-session -d -s notebook 'jupyter notebook --no-browser'
-```
-
-### client
-1. setup ssh tunnel.
-```bash
-$ ssh -i ~/.ssh/${YOUR_KEY} -f -NL ${YOUR_PORT}:localhost:8888 ${USER_NAME}@${INSTANCE_IP}
-```
-1. open browser and access `http://localhost:${YOUR_PORT}`, type the password.
-
-
-## References
-- jupyter in ec2
-  - https://qiita.com/t12968yy/items/b6c14f48638060916824
-- ssh tunnel
-  - https://www.datasciencebytes.com/bytes/2015/12/18/using-jupyter-notebooks-securely-on-remote-linux-machines/
-  - https://qiita.com/mechamogera/items/b1bb9130273deb9426f5
-- execute tmux as a daemon
-  - coming soon
-
-- MeCab on Ubuntu 18.04
-  - https://qiita.com/SUZUKI_Masaya/items/685000d569452585210c
