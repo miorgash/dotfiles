@@ -32,10 +32,24 @@
 $ sudo docker build -t miorgash/py:latest .
 ```
 
-### Setup container
+### Run
 
-1. Run container anyway
-2. Get hashed passwd:
+Using `docker run` command:
+
+```
+$ # container
+$ sudo docker run -itd -p 8888:8888 -v /mnt/py:/var/assets --restart=always --name py miorgash/py:latest
+$ sudo docker run -itd -p 8888:8888 -v /mnt/py:/var/assets --restart=always --name py --gpus all,driver=nvidia,capabilities=compute miorgash/py:latest
+```
+! Using GPUs via docker-compose is not stable.
+
+### Exec
+
+```
+$ sudo docker exec -it py /bin/bash
+```
+
+### Get hashed passwd:
 
 ```
 $ python3.7 -c 'from notebook.auth import passwd;print(passwd())'
@@ -48,17 +62,7 @@ c.NotebookApp.password = '$hashed_password'
 c.NotebookApp.notebook_dir = '/var/assets'
 ```
 
-### Run
 
-Using `docker run` command:
-
-```
-$ # container
-$ sudo docker run -itd -p 8888:8888 -v /mnt/pynlp:/var/assets --name pynlp miorgash/pynlp:latest
-$ sudo docker run --gpus all,driver=nvidia,capabilities=compute -itd -p 8888:8888 -v /mnt/pynlp:/var/assets --name pynlp miorgash/pynlp:latest
-```
-
-! Using GPUs via docker-compose is not stable.
 
 ### How to use notebook
 (Client operation)
