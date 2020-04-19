@@ -43,25 +43,38 @@ $ sudo docker run -itd -p 8888:8888 -v /mnt/py:/var/assets --restart=always --na
 ```
 ! Using GPUs via docker-compose is not stable.
 
-### Exec
+### Initialize
+
+Login to container:
 
 ```
 $ sudo docker exec -it py /bin/bash
 ```
 
-### Get hashed passwd:
+Get hashed password:
 
 ```
-$ python3.7 -c 'from notebook.auth import passwd;print(passwd())'
+# python3.7 -c 'from notebook.auth import passwd;print(passwd())'
 ```
 
-3. Set config:
+Set config:
 
 ```~/.jupyter/jupyter_notebook_config.py
 c.NotebookApp.password = '$hashed_password'
 c.NotebookApp.notebook_dir = '/var/assets'
 ```
 
+Logout:
+
+```
+# exit
+```
+
+Restart
+
+```
+sudo docker restart py
+```
 
 
 ### How to use notebook
