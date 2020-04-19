@@ -1,8 +1,8 @@
 version: '3'
 services:
-  pynlp:
-    image: miorgash/pynlp:latest
-    container_name: pynlp
+  nlp:
+    image: miorgash/py:latest
+    container_name: py
     restart: always
     ports:
       - 8888:8888
