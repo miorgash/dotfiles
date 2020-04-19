@@ -44,8 +44,8 @@ $ # Samba
 $ sudo apt install cifs-utils -y
 $ 
 $ # GPU
-$ # AWS 公式イメージを利用
-$ # 非 GPU インスタンスとの使い分け方針は検討
+$ # Deep Learning Base AMI (Ubuntu 18.04) Version 22.0 (ami-0cc60358212c0cc7e) を利用想定
+$ # GPU が必要ない場合は適宜インスタンスタイプを変更する（別途インスタンスを用意する必要は無い）
 $ # https://qiita.com/ttsubo/items/c97173e1f04db3cbaeda
 $ 
 $ # /etc/modprobe.d/blacklost-nouveau.conf
@@ -64,20 +64,21 @@ $ # https://thr3a.hatenablog.com/entry/20180113/1515820265
 $ # from tensorflow.python.client import device_lib
 $ # device_lib.list_local_devices()
 $ 
-$ # python
-$ sudo apt update -y && sudo apt upgrade -y && sudo apt install python3.7 -y && sudo apt install python3.7-dev -y && sudo apt install python3-pip -y && sudo apt install python3.7-venv -y
-$ python3.7 -m pip install -U pip
-$ # python3.7 -m venv ~/.venv/${VENV_NAME}
-$ sh env/ubuntu/add-python-setting-to-zshrc.sh # エイリアス等を設定
-$ 
-$ # MeCab
-$ sudo apt install mecab libmecab-dev mecab-ipadic-utf8 -y
-$ sudo apt install unidic-mecab -y
-$ sudo update-alternatives --config mecab-dictionary
-$ sudo apt install git make curl xz-utils file unzip -y
-$ git clone --depth 1 https://github.com/neologd/mecab-unidic-neologd /tmp/mecab-unidic-neologd
-$ cd /tmp/mecab-unidic-neologd
-$ ./bin/install-mecab-unidic-neologd -n -y
+$ # 以下不要
+$ # # python
+$ # sudo apt update -y && sudo apt upgrade -y && sudo apt install python3.7 -y && sudo apt install python3.7-dev -y && sudo apt install python3-pip -y && sudo apt install python3.7-venv -y
+$ # python3.7 -m pip install -U pip
+$ # # python3.7 -m venv ~/.venv/${VENV_NAME}
+$ # sh env/ubuntu/add-python-setting-to-zshrc.sh # エイリアス等を設定
+$ # 
+$ # # MeCab
+$ # sudo apt install mecab libmecab-dev mecab-ipadic-utf8 -y
+$ # sudo apt install unidic-mecab -y
+$ # sudo update-alternatives --config mecab-dictionary
+$ # sudo apt install git make curl xz-utils file unzip -y
+$ # git clone --depth 1 https://github.com/neologd/mecab-unidic-neologd /tmp/mecab-unidic-neologd
+$ # cd /tmp/mecab-unidic-neologd
+$ # ./bin/install-mecab-unidic-neologd -n -y
 ```
 
 ## Setup
