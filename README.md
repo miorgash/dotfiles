@@ -34,13 +34,14 @@ $ sudo docker build -t miorgash/py:latest .
 
 ### Setup container
 
-Get hashed passwd:
+1. Run container anyway
+2. Get hashed passwd:
 
 ```
 $ python3.7 -c 'from notebook.auth import passwd;print(passwd())'
 ```
 
-Set config:
+3. Set config:
 
 ```~/.jupyter/jupyter_notebook_config.py
 c.NotebookApp.password = '$hashed_password'
