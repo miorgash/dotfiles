@@ -16,16 +16,48 @@
         - Dockerfile
 ```
 
-# 使い方
+# Initialize procedure
 
 - ホストマシンは適宜最新の手順を参照する
 - dotfiles でアプリケーションごとの設定ファイルを管理する．ホストマシン／コンテナ問わず同ディレクトリ配下の設定ファイルを適宜利用する．
 
-## ホストマシンのセットアップ
+## Hosting machine
 
 `docs` 以下各 OS の手順を参照．
 
-## 
+## Docker applications
+### build image
+
+```
+$ sudo docker build -t miorgash/py:latest .
+```
+
+### Setup container
+
+Get hashed passwd:
+
+```
+$ python3.7 -c 'from notebook.auth import passwd;print(passwd())'
+```
+
+Set config:
+
+```~/.jupyter/jupyter_notebook_config.py
+c.NotebookApp.password = '$hashed_password'
+c.NotebookApp.notebook_dir = '/var/assets'
+```
+
+### Run
+
+Using `docker run` command:
+
+```
+$ # container
+$ sudo docker run -itd -p 8888:8888 -v /mnt/pynlp:/var/assets --name pynlp miorgash/pynlp:latest
+$ sudo docker run --gpus all,driver=nvidia,capabilities=compute -itd -p 8888:8888 -v /mnt/pynlp:/var/assets --name pynlp miorgash/pynlp:latest
+```
+
+! Using GPUs via docker-compose is not stable.
 
 
 ---
