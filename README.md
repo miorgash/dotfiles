@@ -60,6 +60,31 @@ $ sudo docker run --gpus all,driver=nvidia,capabilities=compute -itd -p 8888:888
 
 ! Using GPUs via docker-compose is not stable.
 
+### How to use notebook
+(Client operation)
+1. setup ssh tunnel.
+```bash
+$ ssh -i ~/.ssh/${YOUR_KEY} -f -NL ${YOUR_PORT}:localhost:8888 ${USER_NAME}@${INSTANCE_IP}
+```
+1. open browser and access `http://localhost:${YOUR_PORT}`, type the password.
+
+### mecab dict location
+```
+$ # container 内のものは改めて確認．
+$ ls /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-unidic-neologd
+```
+
+# References
+- jupyter in ec2
+  - https://qiita.com/t12968yy/items/b6c14f48638060916824
+- ssh tunnel
+  - https://www.datasciencebytes.com/bytes/2015/12/18/using-jupyter-notebooks-securely-on-remote-linux-machines/
+  - https://qiita.com/mechamogera/items/b1bb9130273deb9426f5
+- execute tmux as a daemon
+  - coming soon
+
+- MeCab on Ubuntu 18.04
+  - https://qiita.com/SUZUKI_Masaya/items/685000d569452585210c
 
 ---
 # bak
