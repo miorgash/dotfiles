@@ -1,3 +1,35 @@
+# 構成
+```
+- docs
+    - osx.md
+    - ubuntu.md
+- dotfiles
+    - init.vim
+    - .tmux.conf
+    - requirements.txt
+    - custom.css
+- docker
+    - dev # services
+        - docker-compose.yml
+        - py # individual apps
+            - Dockerfile
+```
+
+# 使い方
+
+- ホストマシンは適宜最新の手順を参照する
+- dotfiles でアプリケーションごとの設定ファイルを管理する．ホストマシン／コンテナ問わず同ディレクトリ配下の設定ファイルを適宜利用する．
+
+## ホストマシンのセットアップ
+
+`docs` 以下各 OS の手順を参照．
+
+## 
+
+
+---
+# bak
+
 ## 1. 概観
 分析開発のエコシステムは下記構成要素からなる：
 
