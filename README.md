@@ -8,11 +8,12 @@
     - .tmux.conf
     - requirements.txt
     - custom.css
-- docker
-    - dev # services
+- apps
+    - ana
         - docker-compose.yml
-        - py # individual apps
-            - Dockerfile
+- services
+    - py
+        - Dockerfile
 ```
 
 # 使い方
