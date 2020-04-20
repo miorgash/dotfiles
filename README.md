@@ -37,9 +37,12 @@ $ sudo docker build -t miorgash/py:latest .
 Using `docker run` command:
 
 ```
-$ # container
+$ # for ubuntu
 $ sudo docker run -itd -p 8888:8888 -v /mnt/py:/var/assets --restart=always --name py miorgash/py:latest
 $ sudo docker run -itd -p 8888:8888 -v /mnt/py:/var/assets --restart=always --name py --gpus all,driver=nvidia,capabilities=compute miorgash/py:latest
+$ # for osx
+$ sudo docker run -itd -p 8888:8888 -v ~/assets:/var/assets --restart=always --name py miorgash/py:latest
+$ sudo docker run -itd -p 8888:8888 -v ~/assets:/var/assets --restart=always --name py --gpus all,driver=nvidia,capabilities=compute miorgash/py:latest
 ```
 ! Using GPUs via docker-compose is not stable.
 
