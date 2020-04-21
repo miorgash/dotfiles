@@ -1,34 +1,40 @@
 # How to setup Ubuntu 18.04
 
 ## os
-```
-$ # setpassword
-$ sudo su
-# passwd ubuntu
-# exit
-$ 
-$ # create ssh key
-$ ssh-keygen
-$ 
-$ sudo apt update & sudo apt upgrade
-$ 
-```
+1. setpassword
+
+    ```console
+    sudo su
+    passwd ubuntu
+    exit
+    ```
+
+1. create ssh key
+
+    ```console
+    ssh-keygen
+    ```
+
+1. apt
+
+    ```console
+    sudo apt update & sudo apt upgrade
+    ```
 
 ## zsh
+1. install zsh
+
 ```
-$ sudo apt install zsh -y
-$ 
-$ # prezto
-$ # 1. オフィシャル README にしたがってインストール＆ログインシェルに設定: https://github.com/sorin-ionescu/prezto
-$ # 2. .zshrc で prompt 設定を保存（prompt $name だと保存されない）: https://qiita.com/notakaos/items/89057f2119655ab9f920
-$ 
-$ # Personal settings
-$ # repository
-$ git clone https://github.com/miorgash/env.git
+sudo apt install zsh -y
 ```
+
+1. prezto
+  1. [README](https://github.com/sorin-ionescu/prezto) にしたがってインストール＆ログインシェルに設定: 
+  1. .zshrc で prompt 設定を保存（prompt $name だと保存されない）: https://qiita.com/notakaos/items/89057f2119655ab9f920
 
 ## tmux
 ```
+git clone https://github.com/miorgash/env.git
 ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
 ```
 
@@ -37,9 +43,8 @@ ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
 1. install
 
     ```console
-    sudo apt install neovim -y
     mkdir ~/.config
-    sh env/ubuntu/add-neovim-setting-to-zshrc.sh # zshrc を設定
+    sudo apt install neovim -y
     ```
 
 1. dotfiles
@@ -71,13 +76,10 @@ ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
    ```
 
 ## Docker & docker-compose
-```
-$ # 公式 Docs にしたがってインストール
-$ # - Docker: https://docs.docker.com/install/linux/docker-ce/ubuntu/#prerequisites
-$ # - docker-compose: https://docs.docker.com/compose/install/#install-compose
-```
+- Docker: https://docs.docker.com/install/linux/docker-ce/ubuntu/#prerequisites
+- docker-compose: https://docs.docker.com/compose/install/#install-compose
 
-## Samba
+## for Samba
 ```
 $ sudo apt install cifs-utils -y
 ```
