@@ -1,6 +1,7 @@
 # How to setup Ubuntu 18.04
 
-```bash
+## os
+```
 $ # setpassword
 $ sudo su
 # passwd ubuntu
@@ -11,7 +12,10 @@ $ ssh-keygen
 $ 
 $ sudo apt update & sudo apt upgrade
 $ 
-$ # zsh
+```
+
+## zsh
+```
 $ sudo apt install zsh -y
 $ 
 $ # prezto
@@ -21,71 +25,82 @@ $
 $ # Personal settings
 $ # repository
 $ git clone https://github.com/miorgash/env.git
-$ 
-$ # tmux
-$ ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
-$ 
-$ # nvim
-$ sudo apt install neovim -y
-$ mkdir ~/.config
-$ sh env/ubuntu/add-neovim-setting-to-zshrc.sh # zshrc を設定
-$ # dotfile setting
-$ echo '\n# nvim settings' >> ~/.zshrc
-$ echo 'export XDG_CONFIG_HOME="${HOME}/.config"' >> ~/.zshrc
-$ echo '\n# alias' >> ~/.zshrc
-$ echo 'alias vim=nvim' >> ~/.zshrc
-$ exit # 設定反映のため；再度ログイン
-$ env # XGD_CONFIG_HOME 設定を確認
-$ sh env/ubuntu/setup-neovim.sh # colorscheme, vim-plug を設定
-$ # :PlugInstall
-$ 
-$ 
-$ # Docker & docker-compose
+```
+
+## tmux
+```
+ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
+```
+
+## nvim
+
+- install
+```
+sudo apt install neovim -y
+mkdir ~/.config
+sh env/ubuntu/add-neovim-setting-to-zshrc.sh # zshrc を設定
+```
+- dotfiles
+```
+echo '\n# nvim settings' >> ~/.zshrc
+echo 'export XDG_CONFIG_HOME="${HOME}/.config"' >> ~/.zshrc
+echo '\n# alias' >> ~/.zshrc
+echo 'alias vim=nvim' >> ~/.zshrc
+exit # 設定反映のため再度ログイン
+env # XGD_CONFIG_HOME 設定を確認
+```
+- colorscheme
+```
+mkdir -p ${XDG_CONFIG_HOME}/nvim/colors
+ln -s ${HOME}/env/dotfiles/init.vim ${XDG_CONFIG_HOME}/nvim/init.vim
+git clone https://github.com/cocopon/iceberg.vim/ ${HOME}/iceberg.vim
+cp ${HOME}/iceberg.vim/colors/iceberg.vim ${XDG_CONFIG_HOME}/nvim/colors/iceberg.vim
+
+```
+- vim-plug
+```
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# :PlugInstall
+```
+
+## Docker & docker-compose
+```
 $ # 公式 Docs にしたがってインストール
 $ # - Docker: https://docs.docker.com/install/linux/docker-ce/ubuntu/#prerequisites
 $ # - docker-compose: https://docs.docker.com/compose/install/#install-compose
-$ 
-$ # Samba
-$ sudo apt install cifs-utils -y
-$ 
-$ # GPU
-$ # Deep Learning Base AMI (Ubuntu 18.04) Version 22.0 (ami-0cc60358212c0cc7e) を利用想定
-$ # GPU が必要ない場合は適宜インスタンスタイプを変更する（別途インスタンスを用意する必要は無い）
-$ # https://qiita.com/ttsubo/items/c97173e1f04db3cbaeda
-$ 
-$ # /etc/modprobe.d/blacklost-nouveau.conf
-$ # blacklist nouveau
-$ # options nouveau modeset=0
-$ sudo update-initramfs -u # initramfs 再構築
-$ sudo reboot
-$ # install nvidia driver
-$ sudo apt update && sudo apt install nvidia-driver-430 -y && sudo apt install nvidia-cuda-toolkit -y
-$ # nvidia driver インストール確認
-$ lspci -vv|grep -i nvidia
-$ # nvidia-smi コマンド動作確認
-$ nvidia-smi
-$ # python からの利用確認；container 立ち上げ後，notebool/python で以下コードを実行
-$ # https://thr3a.hatenablog.com/entry/20180113/1515820265
-$ # from tensorflow.python.client import device_lib
-$ # device_lib.list_local_devices()
-$ 
-$ # 以下不要
-$ # # python
-$ # sudo apt update -y && sudo apt upgrade -y && sudo apt install python3.7 -y && sudo apt install python3.7-dev -y && sudo apt install python3-pip -y && sudo apt install python3.7-venv -y
-$ # python3.7 -m pip install -U pip
-$ # # python3.7 -m venv ~/.venv/${VENV_NAME}
-$ # sh env/ubuntu/add-python-setting-to-zshrc.sh # エイリアス等を設定
-$ # 
-$ # # MeCab
-$ # sudo apt install mecab libmecab-dev mecab-ipadic-utf8 -y
-$ # sudo apt install unidic-mecab -y
-$ # sudo update-alternatives --config mecab-dictionary
-$ # sudo apt install git make curl xz-utils file unzip -y
-$ # git clone --depth 1 https://github.com/neologd/mecab-unidic-neologd /tmp/mecab-unidic-neologd
-$ # cd /tmp/mecab-unidic-neologd
-$ # ./bin/install-mecab-unidic-neologd -n -y
 ```
 
+## Samba
+```
+$ sudo apt install cifs-utils -y
+```
+
+## GPU
+```
+# Deep Learning Base AMI (Ubuntu 18.04) Version 22.0 (ami-0cc60358212c0cc7e) を利用想定
+# GPU が必要ない場合は適宜インスタンスタイプを変更する（別途インスタンスを用意する必要は無い）
+# https://qiita.com/ttsubo/items/c97173e1f04db3cbaeda
+
+# /etc/modprobe.d/blacklost-nouveau.conf
+# blacklist nouveau
+# options nouveau modeset=0
+sudo update-initramfs -u # initramfs 再構築
+sudo reboot
+# install nvidia driver
+sudo apt update && sudo apt install nvidia-driver-430 -y && sudo apt install nvidia-cuda-toolkit -y
+# nvidia driver インストール確認
+lspci -vv|grep -i nvidia
+# nvidia-smi コマンド動作確認
+nvidia-smi
+# python からの利用確認；container 立ち上げ後，notebool/python で以下コードを実行
+# https://thr3a.hatenablog.com/entry/20180113/1515820265
+# from tensorflow.python.client import device_lib
+# device_lib.list_local_devices()
+```
+
+---
+bak
 ## Setup
 
 ```bash
