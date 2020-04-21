@@ -36,39 +36,39 @@ ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
 
 1. install
 
-  ```console
-  sudo apt install neovim -y
-  mkdir ~/.config
-  sh env/ubuntu/add-neovim-setting-to-zshrc.sh # zshrc を設定
-  ```
+    ```console
+    sudo apt install neovim -y
+    mkdir ~/.config
+    sh env/ubuntu/add-neovim-setting-to-zshrc.sh # zshrc を設定
+    ```
 
 1. dotfiles
 
-  ```console
-  echo '\n# nvim settings' >> ~/.zshrc
-  echo 'export XDG_CONFIG_HOME="${HOME}/.config"' >> ~/.zshrc
-  echo '\n# alias' >> ~/.zshrc
-  echo 'alias vim=nvim' >> ~/.zshrc
-  exit # 設定反映のため再度ログイン
-  env # XGD_CONFIG_HOME 設定を確認
-  ```
+    ```console
+    echo '\n# nvim settings' >> ~/.zshrc
+    echo 'export XDG_CONFIG_HOME="${HOME}/.config"' >> ~/.zshrc
+    echo '\n# alias' >> ~/.zshrc
+    echo 'alias vim=nvim' >> ~/.zshrc
+    exit # 設定反映のため再度ログイン
+    env # XGD_CONFIG_HOME 設定を確認
+    ```
 
 1. colorscheme
 
-  ```console
-  mkdir -p ${XDG_CONFIG_HOME}/nvim/colors
-  ln -s ${HOME}/env/dotfiles/init.vim ${XDG_CONFIG_HOME}/nvim/init.vim
-  git clone https://github.com/cocopon/iceberg.vim/ ${HOME}/iceberg.vim
-  cp ${HOME}/iceberg.vim/colors/iceberg.vim ${XDG_CONFIG_HOME}/nvim/colors/iceberg.vim
-  
-  ```
+    ```console
+    mkdir -p ${XDG_CONFIG_HOME}/nvim/colors
+    ln -s ${HOME}/env/dotfiles/init.vim ${XDG_CONFIG_HOME}/nvim/init.vim
+    git clone https://github.com/cocopon/iceberg.vim/ ${HOME}/iceberg.vim
+    cp ${HOME}/iceberg.vim/colors/iceberg.vim ${XDG_CONFIG_HOME}/nvim/colors/iceberg.vim
+    
+    ```
 
 1. vim-plug
-  ```console
-  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  # :PlugInstall
-  ```
+   ```console
+   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+   # :PlugInstall
+   ```
 
 ## Docker & docker-compose
 ```
