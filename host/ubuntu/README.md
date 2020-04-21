@@ -91,9 +91,77 @@ $ sudo apt install cifs-utils -y
 ```
 
 ## GPU
+
+- [AWS](https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/install-nvidia-driver.html)
+- [NVIDIA](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html)
+
+### Essential pkgs
+
+- nvcc
+- dotfiles
+
+### Assessment
+1. choose
+    - AWS EC2 instance type([AWS](https://docs.aws.amazon.com/ja_jp/dlami/latest/devguide/gpu.html))
+        - p3.* -> NVIDIA Tesla V100 GPU
+        - p2.* -> NVIDIA Tesla K80 GPU
+    - Tensorflow version
+        - 2.1.0 -> cuDNN 7.6, CUDA 10.1
+        - 1.14.0 -> cuDNN 7.4, CUDA 10.0
+1. [look up and download proper driver version](https://www.nvidia.co.jp/Download/index.aspx?lang=jp)
+    - Tesla V100, CUDA 10.1 -> 418.126.03
+    - Tesla K80, CUDA 10.0 -> 410.129
+
+### Set up conponents
+
+1. Check and uninstall current version if exists
+    1. GPU
+
+        ```console
+        lspci | grep -i nvidia
+        # 00:1e.0 3D controller: NVIDIA Corporation GK210GL [Tesla K80] (rev a1)
+        ```
+        
+    1. Driver
+
+        ```console
+        cat /proc/driver/nvidia/version
+        # cat: /proc/driver/nvidia/version: No such file or directory
+        ```
+        
+    1. CUDA
+
+        ```console
+        ```
+        
+    1. cuDNN
+
+        ```console
+        ```
+        
+1. Set up
+    1. GPU
+
+        ```console
+        ```
+        
+    1. Driver
+
+        ```console
+        ```
+        
+    1. CUDA
+
+        ```console
+        ```
+        
+    1. cuDNN
+
+        ```console
+        ```
+        
+
 ```
-# Deep Learning Base AMI (Ubuntu 18.04) Version 22.0 (ami-0cc60358212c0cc7e) を利用想定
-# GPU が必要ない場合は適宜インスタンスタイプを変更する（別途インスタンスを用意する必要は無い）
 # https://qiita.com/ttsubo/items/c97173e1f04db3cbaeda
 
 # /etc/modprobe.d/blacklost-nouveau.conf
