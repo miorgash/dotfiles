@@ -21,10 +21,17 @@
     sudo apt update & sudo apt upgrade
     ```
 
+1. clone this repo
+
+    ```console
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    ```
+
 ## zsh
 1. install zsh
 
-    ```
+    ```console
     sudo apt install zsh -y
     ```
 
@@ -34,8 +41,7 @@
 
 
 ## tmux
-```
-git clone https://github.com/miorgash/env.git
+```console
 ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
 ```
 
@@ -81,7 +87,7 @@ ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
 - docker-compose: https://docs.docker.com/compose/install/#install-compose
 
 ## for Samba
-```
+```console
 $ sudo apt install cifs-utils -y
 ```
 
