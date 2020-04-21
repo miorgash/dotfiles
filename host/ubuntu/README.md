@@ -29,6 +29,11 @@ $ # nvim
 $ sudo apt install neovim -y
 $ mkdir ~/.config
 $ sh env/ubuntu/add-neovim-setting-to-zshrc.sh # zshrc を設定
+$ # dotfile setting
+$ echo '\n# nvim settings' >> ~/.zshrc
+$ echo 'export XDG_CONFIG_HOME="${HOME}/.config"' >> ~/.zshrc
+$ echo '\n# alias' >> ~/.zshrc
+$ echo 'alias vim=nvim' >> ~/.zshrc
 $ exit # 設定反映のため；再度ログイン
 $ env # XGD_CONFIG_HOME 設定を確認
 $ sh env/ubuntu/setup-neovim.sh # colorscheme, vim-plug を設定
