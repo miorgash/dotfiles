@@ -30,7 +30,8 @@
 
 1. prezto
     1. [README](https://github.com/sorin-ionescu/prezto) にしたがってインストール＆ログインシェルに設定: 
-    1. .zshrc で prompt 設定を保存（prompt $name だと保存されない）: https://qiita.com/notakaos/items/89057f2119655ab9f920
+    1. [.zshrc で prompt 設定を保存](https://qiita.com/notakaos/items/89057f2119655ab9f920)（prompt $name だと保存されない）: 
+
 
 ## tmux
 ```
