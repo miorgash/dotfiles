@@ -24,8 +24,7 @@
 1. clone this repo
 
     ```console
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    git clone https://github.com/miorgash/env.git ~/env
     ```
 
 ## zsh
