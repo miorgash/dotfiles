@@ -22,15 +22,13 @@
     ```
 
 ## zsh
-
 1. install zsh
 
-```
-sudo apt install zsh -y
-```
+    ```
+    sudo apt install zsh -y
+    ```
 
 1. prezto
-
     1. [README](https://github.com/sorin-ionescu/prezto) にしたがってインストール＆ログインシェルに設定: 
     1. .zshrc で prompt 設定を保存（prompt $name だと保存されない）: https://qiita.com/notakaos/items/89057f2119655ab9f920
 
