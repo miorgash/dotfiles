@@ -1,6 +1,6 @@
 # How to setup Ubuntu 18.04
 
-## os
+## 1. os
 1. setpassword
 
     ```console
@@ -27,7 +27,7 @@
     git clone https://github.com/miorgash/env.git ~/env
     ```
 
-## zsh
+## 2. zsh
 1. install zsh
 
     ```console
@@ -39,12 +39,12 @@
     1. [.zshrc で prompt 設定を保存](https://qiita.com/notakaos/items/89057f2119655ab9f920)（prompt $name だと保存されない）: 
 
 
-## tmux
+## 3. tmux
 ```console
 ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
 ```
 
-## nvim
+## 4. nvim
 
 1. install
 
@@ -84,6 +84,9 @@ ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
 ## Docker & docker-compose
 - Docker: https://docs.docker.com/install/linux/docker-ce/ubuntu/#prerequisites
 - docker-compose: https://docs.docker.com/compose/install/#install-compose
+- gpu settings
+    - [NVIDIA/nvidia-docker](https://github.com/NVIDIA/nvidia-docker/tree/master#quickstart)
+    - [blog mahoroi com - Docker コンテナでも GPU が使いたい](https://blog.mahoroi.com/posts/2019/12/docker-gpus-nvidia/)
 
 ## for Samba
 ```console
@@ -229,26 +232,6 @@ Check, uninstall current version if exists, and install required version
         # libcudnn7-dev/now 7.4.2.24-1+cuda10.0 amd64 [installed,local]
         # libcudnn7-doc/now 7.4.2.24-1+cuda10.0 amd64 [installed,local]
         ```
-
-```
-# https://qiita.com/ttsubo/items/c97173e1f04db3cbaeda
-
-# /etc/modprobe.d/blacklost-nouveau.conf
-# blacklist nouveau
-# options nouveau modeset=0
-sudo update-initramfs -u # initramfs 再構築
-sudo reboot
-# install nvidia driver
-sudo apt update && sudo apt install nvidia-driver-430 -y && sudo apt install nvidia-cuda-toolkit -y
-# nvidia driver インストール確認
-lspci -vv|grep -i nvidia
-# nvidia-smi コマンド動作確認
-nvidia-smi
-# python からの利用確認；container 立ち上げ後，notebool/python で以下コードを実行
-# https://thr3a.hatenablog.com/entry/20180113/1515820265
-# from tensorflow.python.client import device_lib
-# device_lib.list_local_devices()
-```
 
 ---
 Other references
