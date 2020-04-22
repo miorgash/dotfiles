@@ -101,65 +101,70 @@ $ sudo apt install cifs-utils -y
 - dotfiles
 
 ### Assessment
-1. choose
-    - AWS EC2 instance type([AWS](https://docs.aws.amazon.com/ja_jp/dlami/latest/devguide/gpu.html))
-        - p3.* -> NVIDIA Tesla V100 GPU
-        - p2.* -> NVIDIA Tesla K80 GPU
-    - Tensorflow version
+1. Choose
+    - Tensorflow version([Tensorflow - テスト済みのビルド設定](https://www.tensorflow.org/install/source#linux))
         - 2.1.0 -> cuDNN 7.6, CUDA 10.1
         - 1.14.0 -> cuDNN 7.4, CUDA 10.0
-1. [look up and download proper driver version](https://www.nvidia.co.jp/Download/index.aspx?lang=jp)
+    - AWS EC2 instance type([AWS - 推奨 GPU インスタンス](https://docs.aws.amazon.com/ja_jp/dlami/latest/devguide/gpu.html))
+        - p3.* -> NVIDIA Tesla V100 GPU
+        - p2.* -> NVIDIA Tesla K80 GPU
+1. Look up and download proper driver version[NVIDIA ドライバダウンロード](https://www.nvidia.co.jp/Download/index.aspx?lang=jp)
     - Tesla V100, CUDA 10.1 -> 418.126.03
     - Tesla K80, CUDA 10.0 -> 410.129
+1. Determine composition
+    - Tensorflow: 1.14.0
+    - Tesla K80(p2.*)
+    - CUDA Toolkit: 10.0
+    - NVIDIA Driver: 410.129
 
 ### Set up conponents
 
-1. Check and uninstall current version if exists
-    1. GPU
+Check, uninstall current version if exists, and install required version
+
+1. GPU
+    1. check
 
         ```console
         lspci | grep -i nvidia
         # 00:1e.0 3D controller: NVIDIA Corporation GK210GL [Tesla K80] (rev a1)
         ```
-        
-    1. Driver
+    
+1. Driver
+    1. check([Qiita - Ubuntu 16.04 をインストールして...](https://qiita.com/konzo_/items/3e2d1d7480f7ef632603))
 
         ```console
+        # NVIDIA Drivers
         cat /proc/driver/nvidia/version
         # cat: /proc/driver/nvidia/version: No such file or directory
+    
+        # nouveau(a community driver)
+        lsmod | grep -i nouveau
+        # returns nothing; if exists: [Qiita - Ubuntu 16.04 をインストールして...](https://qiita.com/konzo_/items/3e2d1d7480f7ef632603)
         ```
-        
-    1. CUDA
+
+    1. Install([NVIDIA Driver Installation Quickstart Guide - 2.1. Ubuntu LTS](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html#ubuntu-lts))
 
         ```console
+        sudo apt-get install linux-headers-$(uname -r)
+        distribution=$(. /etc/os-release;echo $ID$VERSION_ID | sed -e 's/\.//g')
+        wget https://developer.download.nvidia.com/compute/cuda/repos/$distribution/x86_64/cuda-$distribution.pin
+        sudo mv cuda-$distribution.pin /etc/apt/preferences.d/cuda-repository-pin-600
+        sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/$distribution/x86_64/7fa2af80.pub
+        echo "deb http://developer.download.nvidia.com/compute/cuda/repos/$distribution/x86_64 /" | sudo tee /etc/apt/sources.list.d/cuda.list
+        sudo apt-get update
+        sudo apt-get -y install nvidia-driver-410 # doesn't care for minor version
+        # sudo apt-get -y install cuda-drivers # newest anyway
         ```
-        
-    1. cuDNN
+    
+1. CUDA (=CUDA Toolkit)
 
-        ```console
-        ```
-        
-1. Set up
-    1. GPU
+    ```console
+    ```
+    
+1. cuDNN
 
-        ```console
-        ```
-        
-    1. Driver
-
-        ```console
-        ```
-        
-    1. CUDA
-
-        ```console
-        ```
-        
-    1. cuDNN
-
-        ```console
-        ```
-        
+    ```console
+    ```
 
 ```
 # https://qiita.com/ttsubo/items/c97173e1f04db3cbaeda
@@ -180,6 +185,11 @@ nvidia-smi
 # from tensorflow.python.client import device_lib
 # device_lib.list_local_devices()
 ```
+
+---
+Other references
+
+- [GPU 関連でよくやる操作](https://qiita.com/sao_rio/items/4ef5604d685f04669f74)
 
 ---
 bak
