@@ -190,26 +190,3 @@ nvidia-smi
 Other references
 
 - [GPU 関連でよくやる操作](https://qiita.com/sao_rio/items/4ef5604d685f04669f74)
-
----
-bak
-## Setup
-
-```bash
-$ # container
-$ sudo docker run -itd -p 8888:8888 -v /mnt/pynlp:/var/assets --name pynlp miorgash/pynlp:latest
-$ sudo docker run --gpus all,driver=nvidia,capabilities=compute -itd -p 8888:8888 -v /mnt/pynlp:/var/assets --name pynlp miorgash/pynlp:latest
-$ 
-$ # jupyter setup
-$ python3.7 -c 'from notebook.auth import passwd;print(passwd())'
-$ # $home/.jupyter/jupyter_notebook_config.py
-$ # c.NotebookApp.password = '$hashed_password'
-$ # c.NotebookApp.notebook_dir = '/var/assets'
-$
-$ # ssh tunnel
-$ ssh -f -NL 9999:localhost:8888 ubuntu@ubuntu
-$ # vim through ssh
-$ vim scp://${username}@${hostname}/${path_relative_from_home}
-$ vim scp://${username}@${hostname}//${path_abs}
-```
-

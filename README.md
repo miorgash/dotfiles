@@ -83,10 +83,19 @@ sudo docker restart py
 ### How to use notebook
 (Client operation)
 1. setup ssh tunnel.
-```bash
-$ ssh -i ~/.ssh/${YOUR_KEY} -f -NL ${YOUR_PORT}:localhost:8888 ${USER_NAME}@${INSTANCE_IP}
-```
+
+    ```console
+    ssh -i ~/.ssh/${YOUR_KEY} -f -NL ${YOUR_PORT}:localhost:8888 ${USER_NAME}@${INSTANCE_IP}
+    ```
+
 1. open browser and access `http://localhost:${YOUR_PORT}`, type the password.
+
+## vim through ssh
+
+```
+vim scp://${username}@${hostname}/${path_relative_from_home}
+vim scp://${username}@${hostname}//${path_abs}
+```
 
 ### mecab dict location
 ```
