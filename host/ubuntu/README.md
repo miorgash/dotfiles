@@ -129,7 +129,7 @@ Check, uninstall current version if exists, and install required version
         # 00:1e.0 3D controller: NVIDIA Corporation GK210GL [Tesla K80] (rev a1)
         ```
     
-1. Driver
+1. NVIDIA Driver(including CUDA)
     1. check([Qiita - Ubuntu 16.04 をインストールして...](https://qiita.com/konzo_/items/3e2d1d7480f7ef632603))
 
         ```console
@@ -155,16 +155,80 @@ Check, uninstall current version if exists, and install required version
         sudo apt-get -y install nvidia-driver-410 # doesn't care for minor version
         # sudo apt-get -y install cuda-drivers # newest anyway
         ```
-    
-1. CUDA (=CUDA Toolkit)
 
-    ```console
-    ```
+        - caution
+            - 上記手順後に `sudo apt-get -y install cuda-10-0` 実行するとなぜか Driver/CUDA ともにバージョンが上がった．
+            - 何らかの事情で `apt-get remove` 実行したあとは `apt-get autoremove` する．
+
+    1. Check
+
+        ```console
+        nvidia-smi
+        # Check 'Driver Version' and 'CUDA Version' in the header
+        cat /proc/driver/nvidia/version
+        # NVRM version: NVIDIA UNIX x86_64 Kernel Module  410.129  Sun Jul 21 07:02:47 CDT 2019
+        # GCC version:  gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)
+        ```
+
+    1. Post-installation([CUDA Toolkit Documentation - Post-installation Actions](https://docs.nvidia.com/cuda/archive/10.0/cuda-installation-guide-linux/index.html#post-installation-actions))
+
+        ```.zshrc
+        export PATH=/usr/local/cuda-10.0/bin${PATH:+:${PATH}}
+        export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+        ```
     
+1. CUDA Toolkit
+
+    1. Pre-check
+
+        ```console
+        nvcc -V
+        ```
+
+    1. install
+        ```console
+        sudo apt-get install -y cuda-toolkit-10-0
+        ```
+    
+    1. Check installed version
+
+        ```console
+        nvcc -V
+        ```
+
 1. cuDNN
 
-    ```console
-    ```
+    1. Pre-check
+    
+        ```console
+        sudo apt list --installed | grep cudnn
+        # libcudnn7/now 7.4.2.24-1+cuda10.0 amd64 [installed,local]
+        # libcudnn7-dev/now 7.4.2.24-1+cuda10.0 amd64 [installed,local]
+        # libcudnn7-doc/now 7.4.2.24-1+cuda10.0 amd64 [installed,local]
+        ```
+
+    1. Download required packages from [NVIDIA Developer - cuDNN Archive](https://developer.nvidia.com/rdp/cudnn-archive#a-collapse742-10) 
+        - cuDNN Runtime Library for Ubuntu18.04 (Deb)
+        - cuDNN Developer Library for Ubuntu18.04 (Deb)
+        - cuDNN Code Samples and User Guide for Ubuntu18.04 (Deb)
+    1. Move files to server in arbitrary way
+    1. Install([Qiita - Docker で，GPU 対応なコンテナ環境を整備する(https://qiita.com/ttsubo/items/c97173e1f04db3cbaeda#%EF%B8%8E-cudnn%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB))
+    
+        ```console
+        # error occures with other order
+        sudo apt install -y ./libcudnn7_7.4.2.24-1+cuda10.0_amd64.deb
+        sudo apt install -y ./libcudnn7-dev_7.4.2.24-1+cuda10.0_amd64.deb
+        sudo apt install -y ./libcudnn7-doc_7.4.2.24-1+cuda10.0_amd64.deb
+        ```
+
+    1. Check installed version
+    
+        ```console
+        sudo apt list --installed | grep cudnn
+        # libcudnn7/now 7.4.2.24-1+cuda10.0 amd64 [installed,local]
+        # libcudnn7-dev/now 7.4.2.24-1+cuda10.0 amd64 [installed,local]
+        # libcudnn7-doc/now 7.4.2.24-1+cuda10.0 amd64 [installed,local]
+        ```
 
 ```
 # https://qiita.com/ttsubo/items/c97173e1f04db3cbaeda
