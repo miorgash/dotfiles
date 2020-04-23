@@ -27,81 +27,10 @@
     git clone https://github.com/miorgash/env.git ~/env
     ```
 
-## 2. zsh
-1. install zsh
+## 2. GPU
 
-    ```console
-    sudo apt install zsh -y
-    ```
-
-1. prezto
-    1. [README](https://github.com/sorin-ionescu/prezto) にしたがってインストール＆ログインシェルに設定: 
-    1. [.zshrc で prompt 設定を保存](https://qiita.com/notakaos/items/89057f2119655ab9f920)（prompt $name だと保存されない）: 
-
-
-## 3. tmux
-```console
-ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
-```
-
-## 4. nvim
-
-1. install
-
-    ```console
-    mkdir ~/.config
-    sudo apt install neovim -y
-    ```
-
-1. dotfiles
-
-    ```console
-    echo '\n# nvim settings' >> ~/.zshrc
-    echo 'export XDG_CONFIG_HOME="${HOME}/.config"' >> ~/.zshrc
-    echo '\n# alias' >> ~/.zshrc
-    echo 'alias vim=nvim' >> ~/.zshrc
-    exit # 設定反映のため再度ログイン
-    env # XGD_CONFIG_HOME 設定を確認
-    ```
-
-1. colorscheme
-
-    ```console
-    mkdir -p ${XDG_CONFIG_HOME}/nvim/colors
-    ln -s ${HOME}/env/dotfiles/init.vim ${XDG_CONFIG_HOME}/nvim/init.vim
-    git clone https://github.com/cocopon/iceberg.vim/ ${HOME}/iceberg.vim
-    cp ${HOME}/iceberg.vim/colors/iceberg.vim ${XDG_CONFIG_HOME}/nvim/colors/iceberg.vim
-    
-    ```
-
-1. vim-plug
-   ```console
-   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-   # :PlugInstall
-   ```
-
-## Docker & docker-compose
-- Docker: https://docs.docker.com/install/linux/docker-ce/ubuntu/#prerequisites
-- docker-compose: https://docs.docker.com/compose/install/#install-compose
-- gpu settings
-    - [NVIDIA/nvidia-docker](https://github.com/NVIDIA/nvidia-docker/tree/master#quickstart)
-    - [blog mahoroi com - Docker コンテナでも GPU が使いたい](https://blog.mahoroi.com/posts/2019/12/docker-gpus-nvidia/)
-
-## for Samba
-```console
-$ sudo apt install cifs-utils -y
-```
-
-## GPU
-
-- [AWS](https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/install-nvidia-driver.html)
-- [NVIDIA](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html)
-
-### Essential pkgs
-
-- nvcc
-- dotfiles
+Set up for Tensorflow ver.1.14.0.  
+(Just in case of a special circumstances; use containers basically)
 
 ### Assessment
 1. Choose
@@ -233,7 +162,76 @@ Check, uninstall current version if exists, and install required version
         # libcudnn7-doc/now 7.4.2.24-1+cuda10.0 amd64 [installed,local]
         ```
 
+## 3. zsh
+1. install zsh
+
+    ```console
+    sudo apt install zsh -y
+    ```
+
+1. prezto
+    1. [README](https://github.com/sorin-ionescu/prezto) にしたがってインストール＆ログインシェルに設定: 
+    1. [.zshrc で prompt 設定を保存](https://qiita.com/notakaos/items/89057f2119655ab9f920)（prompt $name だと保存されない）: 
+
+
+## 4. tmux
+```console
+ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
+```
+
+## 5. nvim
+
+1. install
+
+    ```console
+    mkdir ~/.config
+    sudo apt install neovim -y
+    ```
+
+1. dotfiles
+
+    ```console
+    echo '\n# nvim settings' >> ~/.zshrc
+    echo 'export XDG_CONFIG_HOME="${HOME}/.config"' >> ~/.zshrc
+    echo '\n# alias' >> ~/.zshrc
+    echo 'alias vim=nvim' >> ~/.zshrc
+    exit # 設定反映のため再度ログイン
+    env # XGD_CONFIG_HOME 設定を確認
+    ```
+
+1. colorscheme
+
+    ```console
+    mkdir -p ${XDG_CONFIG_HOME}/nvim/colors
+    ln -s ${HOME}/env/dotfiles/init.vim ${XDG_CONFIG_HOME}/nvim/init.vim
+    git clone https://github.com/cocopon/iceberg.vim/ ${HOME}/iceberg.vim
+    cp ${HOME}/iceberg.vim/colors/iceberg.vim ${XDG_CONFIG_HOME}/nvim/colors/iceberg.vim
+    
+    ```
+
+1. vim-plug
+   ```console
+   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+   # :PlugInstall
+   ```
+
+## 6. Docker & docker-compose
+- Docker: https://docs.docker.com/install/linux/docker-ce/ubuntu/#prerequisites
+- docker-compose: https://docs.docker.com/compose/install/#install-compose
+- gpu settings
+    - [NVIDIA/nvidia-docker](https://github.com/NVIDIA/nvidia-docker/tree/master#quickstart)
+    - [blog mahoroi com - Docker コンテナでも GPU が使いたい](https://blog.mahoroi.com/posts/2019/12/docker-gpus-nvidia/)
+
+## 7. for Samba
+```console
+$ sudo apt install cifs-utils -y
+```
+
 ---
 Other references
 
 - [GPU 関連でよくやる操作](https://qiita.com/sao_rio/items/4ef5604d685f04669f74)
+- [AWS](https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/install-nvidia-driver.html)
+- [NVIDIA](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html)
+
