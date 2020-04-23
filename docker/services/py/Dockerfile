@@ -6,7 +6,6 @@ RUN : "essential" && \
     : "python" && \
     apt install python3.7 python3.7-dev python3-pip python3.7-venv -y && \
     python3.7 -m pip install -U pip && \
-    python3.7 -m venv ~/.venv/nlp && \
     : "MeCab": && \
     apt install mecab libmecab-dev mecab-ipadic-utf8 -y && \
     apt install unidic-mecab -y && \
@@ -23,7 +22,7 @@ RUN : "required by mecab-python3, Tensorflow etc." && \
     python3.7 -m pip install -U setuptools && \
     : "install all packages" && \
     git clone https://github.com/miorgash/env.git ~/env && \
-    python3.7 -m pip install -r ~/env/dotfiles/requirements.txt && \
+    python3.7 -m pip install -r ~/env/dotfiles/requirements-py.txt && \
     python3.7 -m pip install jupyter ipython mecab-python3 && \
     : "jupyter setting" && \
     mkdir -p ~/.jupyter/custom && \
