@@ -16,6 +16,17 @@
         - Dockerfile
 ```
 
+# 考え方
+
+- zsh, nvim, tmux は各 Host マシンで管理する
+- dotfiles 配下の共通設定を各アプリで用いる
+- 次の作業にはそれぞれ適当なコンテナを用いる
+    - jupyter でのレポート作成（深層学習関連以外の汎用的なライブラリを汎用化するため＆見た目の設定を汎用化するため）
+    - GPU を用いた計算
+        - 前処理をする環境で GPU を動かす必要が無い，かつ動かしてたら無駄
+        - GPU 環境まわりのトレンドは流動的なため
+        - 深層学習系のライブラリはライブラリごとに動作要件が異なることが考えられるため
+
 # Initialize procedure
 
 - ホストマシンは適宜最新の手順を参照する
@@ -26,13 +37,14 @@
 `docs` 以下各 OS の手順を参照．
 
 ## Docker applications
-### build image
+### py
+#### build image
 
 ```
 $ sudo docker build -t miorgash/py:latest .
 ```
 
-### Run
+#### Run
 
 Using `docker run` command:
 
@@ -46,7 +58,7 @@ $ sudo docker run -itd -p 8888:8888 -v ~/assets:/var/assets --restart=always --n
 ```
 ! Using GPUs via docker-compose is not stable.
 
-### Initialize
+#### Initialize
 
 Login to container:
 
@@ -80,7 +92,7 @@ sudo docker restart py
 ```
 
 
-### How to use notebook
+#### How to use notebook
 (Client operation)
 1. setup ssh tunnel.
 
@@ -89,6 +101,12 @@ sudo docker restart py
     ```
 
 1. open browser and access `http://localhost:${YOUR_PORT}`, type the password.
+
+### tf1/2
+
+```console
+sudo docker run --rm -v $PWD:/tmp --gpus all -it miorgash/tf1 python3.7 ./${file_name}
+```
 
 ## vim through ssh
 
