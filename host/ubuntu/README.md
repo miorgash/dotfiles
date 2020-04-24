@@ -86,6 +86,7 @@ Check, uninstall current version if exists, and install required version
         sudo apt-get update
         sudo apt-get -y install nvidia-driver-410 # doesn't care for minor version
         # sudo apt-get -y install cuda-drivers # newest anyway
+	# restart
         ```
 
         - caution
