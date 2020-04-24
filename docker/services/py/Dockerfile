@@ -9,8 +9,7 @@ RUN : "essential" && \
     : "MeCab": && \
     apt install mecab libmecab-dev mecab-ipadic-utf8 -y && \
     apt install unidic-mecab -y && \
-    : "# interactive check method" && \
-    : "update-alternatives --config mecab-dictionary" && \
+    : "update-alternatives --config mecab-dictionary # interactive check command" && \
     apt install git make curl xz-utils file unzip -y && \
     git clone --depth 1 https://github.com/neologd/mecab-unidic-neologd /tmp/mecab-unidic-neologd
 WORKDIR /tmp/mecab-unidic-neologd
