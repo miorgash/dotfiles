@@ -1,15 +1,13 @@
-# 構成
+# Design
 ```
 - hosts
     - osx
         - README.md
     - ubuntu
         - README.md
-- dotfiles
-    - init.vim
-    - .tmux.conf
-    - requirements.txt
-    - custom.css
+    - dotfiles
+        - init.vim
+        - .tmux.conf
 - container
     - apps
         - $app_name
@@ -17,18 +15,59 @@
     - services
         - $image_name
             - Dockerfile
+            - requirements.txt, custom.css, etc.
 ```
 
+# 2. Use cases, requirements, motivations
+## 2.1. Host machine
+
+- zsh, nvim, tmux をインストールする（コンテナにはこれらを載せない）
+- dotfiles 配下の共通設定を各ホストで用いる
+
+### 2.1.1. Ubuntu
+
+- 基本的にクラウドの Ubuntu を使う
+
+### 2.1.2. OSX
+
+- オフラインの時に使う（キャンプの時とか）
+
+## 2.2. Container
+
+- Python 環境はコンテナで管理する
+
+### 2.2.1. py
+
+- jupyter でのレポート作成（深層学習関連以外の汎用的なライブラリを汎用化するため＆見た目の設定を汎用化するため）
+- コンテナ化する理由
+    - 可搬性
+
+### 2.2.2. tf*
+
+- GPU を用いた TensorFlow コード実行用のイメージ
+- ホストに GPU が載っていれば利用可能
+- py と独立でコンテナ化する理由
+    - 前処理をする環境で GPU を動かす必要が無い，かつ動かしてたら無駄
+    - GPU 環境まわりのトレンドは流動的なため
+    - 深層学習系のライブラリはライブラリごとに動作要件が異なることが考えられるため
+
+    ```console
+    sudo docker run --rm -v $PWD:/tmp --gpus all -it miorgash/tf${n} python3.7 ./${script}
+    ```
+
+# 3. How to set-up
+## 3.1. Host machine
+
+Look `hosts > $os > README.md`
+
+## 3.2. Container
+
+Look `container > $image > README.md
+
+---
 # 考え方
 
-- zsh, nvim, tmux は各 Host マシンで管理する
-- dotfiles 配下の共通設定を各アプリで用いる
 - 次の作業にはそれぞれ適当なコンテナを用いる
-    - jupyter でのレポート作成（深層学習関連以外の汎用的なライブラリを汎用化するため＆見た目の設定を汎用化するため）
-    - GPU を用いた計算
-        - 前処理をする環境で GPU を動かす必要が無い，かつ動かしてたら無駄
-        - GPU 環境まわりのトレンドは流動的なため
-        - 深層学習系のライブラリはライブラリごとに動作要件が異なることが考えられるため
 
 # Initialize procedure
 
@@ -107,9 +146,6 @@ sudo docker restart py
 
 ### tf1/2
 
-```console
-sudo docker run --rm -v $PWD:/tmp --gpus all -it miorgash/tf1 python3.7 ./${file_name}
-```
 
 ## vim through ssh
 
