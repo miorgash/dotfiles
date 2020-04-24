@@ -38,7 +38,50 @@
     1. [README](https://github.com/sorin-ionescu/prezto) にしたがってインストール＆ログインシェルに設定: 
     1. [.zshrc で prompt 設定を保存](https://qiita.com/notakaos/items/89057f2119655ab9f920)（prompt $name だと保存されない）: 
 
-## 3. GPU
+## 3. tmux
+```console
+ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
+```
+
+## 4. nvim
+
+1. install
+
+    ```console
+    mkdir ~/.config
+    sudo apt install neovim -y
+    ```
+
+1. dotfiles
+
+    ```console
+    echo '\n# nvim settings' >> ~/.zshrc
+    echo 'export XDG_CONFIG_HOME="${HOME}/.config"' >> ~/.zshrc
+    echo '\n# alias' >> ~/.zshrc
+    echo 'alias vim=nvim' >> ~/.zshrc
+    exit # 設定反映のため再度ログイン
+    env # XGD_CONFIG_HOME 設定を確認
+    ```
+
+1. colorscheme
+
+    ```console
+    mkdir -p ${XDG_CONFIG_HOME}/nvim/colors
+    ln -s ${HOME}/env/dotfiles/init.vim ${XDG_CONFIG_HOME}/nvim/init.vim
+    git clone https://github.com/cocopon/iceberg.vim/ ${HOME}/iceberg.vim
+    cp ${HOME}/iceberg.vim/colors/iceberg.vim ${XDG_CONFIG_HOME}/nvim/colors/iceberg.vim
+    
+    ```
+
+1. vim-plug
+   ```console
+   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+   vim
+   # :PlugInstall
+   ```
+
+## 5. GPU
 
 Set up for Tensorflow ver.1.14.0.  
 (Just in case of a special circumstances; use containers basically)
@@ -146,9 +189,6 @@ Check, uninstall current version if exists, and install required version
     
         ```console
         sudo apt list --installed | grep cudnn
-        # libcudnn7/now 7.4.2.24-1+cuda10.0 amd64 [installed,local]
-        # libcudnn7-dev/now 7.4.2.24-1+cuda10.0 amd64 [installed,local]
-        # libcudnn7-doc/now 7.4.2.24-1+cuda10.0 amd64 [installed,local]
         ```
 
     1. Download required packages from [NVIDIA Developer - cuDNN Archive](https://developer.nvidia.com/rdp/cudnn-archive#a-collapse742-10) 
@@ -173,48 +213,6 @@ Check, uninstall current version if exists, and install required version
         # libcudnn7-dev/now 7.4.2.24-1+cuda10.0 amd64 [installed,local]
         # libcudnn7-doc/now 7.4.2.24-1+cuda10.0 amd64 [installed,local]
         ```
-
-## 4. tmux
-```console
-ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
-```
-
-## 5. nvim
-
-1. install
-
-    ```console
-    mkdir ~/.config
-    sudo apt install neovim -y
-    ```
-
-1. dotfiles
-
-    ```console
-    echo '\n# nvim settings' >> ~/.zshrc
-    echo 'export XDG_CONFIG_HOME="${HOME}/.config"' >> ~/.zshrc
-    echo '\n# alias' >> ~/.zshrc
-    echo 'alias vim=nvim' >> ~/.zshrc
-    exit # 設定反映のため再度ログイン
-    env # XGD_CONFIG_HOME 設定を確認
-    ```
-
-1. colorscheme
-
-    ```console
-    mkdir -p ${XDG_CONFIG_HOME}/nvim/colors
-    ln -s ${HOME}/env/dotfiles/init.vim ${XDG_CONFIG_HOME}/nvim/init.vim
-    git clone https://github.com/cocopon/iceberg.vim/ ${HOME}/iceberg.vim
-    cp ${HOME}/iceberg.vim/colors/iceberg.vim ${XDG_CONFIG_HOME}/nvim/colors/iceberg.vim
-    
-    ```
-
-1. vim-plug
-   ```console
-   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-   # :PlugInstall
-   ```
 
 ## 6. Docker & docker-compose
 - Docker: https://docs.docker.com/install/linux/docker-ce/ubuntu/#prerequisites
