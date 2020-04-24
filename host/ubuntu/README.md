@@ -140,9 +140,9 @@ Check, uninstall current version if exists, and install required version
         sudo apt-get update
         sudo apt-get -y install nvidia-driver-410 # doesn't care for minor version
         # sudo apt-get -y install cuda-drivers # newest anyway
-	# restart
         ```
 
+        - restart
         - caution
             - 上記手順後に `sudo apt-get -y install cuda-10-0` 実行するとなぜか Driver/CUDA ともにバージョンが上がった．
             - 何らかの事情で `apt-get remove` 実行したあとは `apt-get autoremove` する．
