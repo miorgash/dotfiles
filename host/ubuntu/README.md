@@ -27,7 +27,18 @@
     git clone https://github.com/miorgash/env.git ~/env
     ```
 
-## 2. GPU
+## 2. zsh
+1. install zsh
+
+    ```console
+    sudo apt install zsh -y
+    ```
+
+1. prezto
+    1. [README](https://github.com/sorin-ionescu/prezto) にしたがってインストール＆ログインシェルに設定: 
+    1. [.zshrc で prompt 設定を保存](https://qiita.com/notakaos/items/89057f2119655ab9f920)（prompt $name だと保存されない）: 
+
+## 3. GPU
 
 Set up for Tensorflow ver.1.14.0.  
 (Just in case of a special circumstances; use containers basically)
@@ -162,18 +173,6 @@ Check, uninstall current version if exists, and install required version
         # libcudnn7-dev/now 7.4.2.24-1+cuda10.0 amd64 [installed,local]
         # libcudnn7-doc/now 7.4.2.24-1+cuda10.0 amd64 [installed,local]
         ```
-
-## 3. zsh
-1. install zsh
-
-    ```console
-    sudo apt install zsh -y
-    ```
-
-1. prezto
-    1. [README](https://github.com/sorin-ionescu/prezto) にしたがってインストール＆ログインシェルに設定: 
-    1. [.zshrc で prompt 設定を保存](https://qiita.com/notakaos/items/89057f2119655ab9f920)（prompt $name だと保存されない）: 
-
 
 ## 4. tmux
 ```console
