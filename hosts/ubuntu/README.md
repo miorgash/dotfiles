@@ -40,7 +40,7 @@
 
 ## 3. tmux
 ```console
-ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
+ln -sf ${HOME}/env/hosts/dotfiles/.tmux.conf ${HOME}/.tmux.conf
 ```
 
 ## 4. nvim
@@ -67,7 +67,7 @@ ln -sf ${HOME}/env/dotfiles/.tmux.conf ${HOME}/.tmux.conf
 
     ```console
     mkdir -p ${XDG_CONFIG_HOME}/nvim/colors
-    ln -s ${HOME}/env/dotfiles/init.vim ${XDG_CONFIG_HOME}/nvim/init.vim
+    ln -sf ${HOME}/env/hosts/dotfiles/init.vim ${XDG_CONFIG_HOME}/nvim/init.vim
     git clone https://github.com/cocopon/iceberg.vim/ ${HOME}/iceberg.vim
     cp ${HOME}/iceberg.vim/colors/iceberg.vim ${XDG_CONFIG_HOME}/nvim/colors/iceberg.vim
     
