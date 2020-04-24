@@ -145,7 +145,7 @@ Check, uninstall current version if exists, and install required version
         - cuDNN Developer Library for Ubuntu18.04 (Deb)
         - cuDNN Code Samples and User Guide for Ubuntu18.04 (Deb)
     1. Move files to server in arbitrary way
-    1. Install([Qiita - Docker で，GPU 対応なコンテナ環境を整備する(https://qiita.com/ttsubo/items/c97173e1f04db3cbaeda#%EF%B8%8E-cudnn%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB))
+    1. Install([Qiita - Docker で，GPU 対応なコンテナ環境を整備する](https://qiita.com/ttsubo/items/c97173e1f04db3cbaeda#%EF%B8%8E-cudnn%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB))
     
         ```console
         # error occures with other order
