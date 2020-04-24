@@ -1,19 +1,22 @@
 # 構成
 ```
-- docs
-    - osx.md
-    - ubuntu.md
+- hosts
+    - osx
+        - README.md
+    - ubuntu
+        - README.md
 - dotfiles
     - init.vim
     - .tmux.conf
     - requirements.txt
     - custom.css
-- apps
-    - ana
-        - docker-compose.yml
-- services
-    - py
-        - Dockerfile
+- container
+    - apps
+        - $app_name
+            - docker-compose.yml
+    - services
+        - $image_name
+            - Dockerfile
 ```
 
 # 考え方
