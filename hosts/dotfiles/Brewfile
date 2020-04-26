@@ -1,28 +1,17 @@
 tap "homebrew/bundle"
 tap "homebrew/core"
+tap "homebrew/cask"
 
-# **
-# other host apps
-# *
 brew "git"
-brew "python3"
-
-# **
-# guest
-# *
-
-# dependencies
-brew "swig"
-
-# shell, editor, terminal emurator, etc.
 brew "tmux"
 brew "zsh"
 brew "neovim"
-brew "docker"
-
-# useful shell commands
 brew "tree"
 
-# nlp
-brew "mecab"
-brew "mecab-ipadic"
+cask "karabiner-elements"
+cask "iTerm2"
+cask "docker"
+cask "docker-compose"
+cask "dropbox"
+cask "coccinellida"
+cask "slack"
