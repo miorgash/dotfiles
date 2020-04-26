@@ -94,7 +94,6 @@ Using `docker run` command:
 $ # for ubuntu
 $ sudo docker run -itd -p 8888:8888 -v ${HOME}/assets/py:/var/assets --restart=always --name py miorgash/py:latest
 $ sudo docker run -itd -p 8888:8888 -v ${HOME}/assets/py:/var/assets --restart=always --name py --gpus all,driver=nvidia,capabilities=compute miorgash/py:latest
-$ sudo docker run -itd -p 8888:8888 -v /mnt/py:/var/assets --restart=always --name py miorgash/py:latest
 $ # for osx
 $ sudo docker run -itd -p 8888:8888 -v ~/assets:/var/assets --restart=always --name py miorgash/py:latest
 $ sudo docker run -itd -p 8888:8888 -v ~/assets:/var/assets --restart=always --name py --gpus all,driver=nvidia,capabilities=compute miorgash/py:latest
