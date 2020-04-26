@@ -40,7 +40,7 @@
 
 ## 3. tmux
 ```console
-ln -sf ${HOME}/env/hosts/dotfiles/.tmux.conf ${HOME}/.tmux.conf
+ln -sf ${HOME}/assets/env/hosts/dotfiles/.tmux.conf ${HOME}/.tmux.conf
 ```
 
 ## 4. nvim
