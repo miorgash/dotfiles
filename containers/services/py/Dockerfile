@@ -22,14 +22,30 @@ RUN : "image peculiar settings" && \
     git clone --depth 1 https://github.com/neologd/mecab-unidic-neologd /tmp/mecab-unidic-neologd
 WORKDIR /tmp/mecab-unidic-neologd
 RUN ./bin/install-mecab-unidic-neologd -n -y
-WORKDIR /tmp
-COPY ./requirements.txt /tmp/requirements.txt
-RUN : "favorite packages" && \
-    python3.7 -m pip install -r /tmp/requirements.txt && \
-    python3.7 -m pip install jupyter ipython mecab-python3
-COPY ./custom.css /root/.jupyter/custom/custom.css
+WORKDIR /var
+COPY ./requirements.txt /var/requirements.txt
+RUN : "Default kernel" && \
+    pip install -U pip && \
+    pip install -r /var/requirements.txt
 RUN : "jupyter setting" && \
     python3.7 -m jupyter notebook --generate-config
+COPY ./TensorFlow-1.14.0/requirements.txt /var/kernels/TensorFlow-1.14.0/requirements.txt
+RUN : "Kernel for TensorFlow 1.14.0" && \
+    python3.7 -m venv /var/kernels/TensorFlow-1.14.0/venv && \
+    . /var/kernels/TensorFlow-1.14.0/venv/bin/activate && \
+    pip install -U pip && \
+    pip install -r /var/kernels/TensorFlow-1.14.0/requirements.txt && \
+    ipython kernel install --user --name=TensorFlow-1.14.0 --display-name=TensorFlow-1.14.0 && \
+    deactivate
+COPY ./TensorFlow-2.1.0/requirements.txt /var/kernels/TensorFlow-2.1.0/requirements.txt
+RUN : "Kernel for TensorFlow 2.1.0" && \
+    python3.7 -m venv /var/kernels/TensorFlow-2.1.0/venv && \
+    . /var/kernels/TensorFlow-2.1.0/venv/bin/activate && \
+    pip install -U pip && \
+    pip install -r /var/kernels/TensorFlow-2.1.0/requirements.txt && \
+    ipython kernel install --user --name=TensorFlow-2.1.0 --display-name=TensorFlow-2.1.0 && \
+    deactivate
+COPY ./custom.css /root/.jupyter/custom/custom.css
 WORKDIR /var/assets
 ENTRYPOINT ["jupyter", "notebook"]
 CMD ["--no-browser", "--port", "8888", "--ip", "0.0.0.0", "--allow-root"]
