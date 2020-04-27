@@ -22,7 +22,7 @@ RUN : "image peculiar settings" && \
     git clone --depth 1 https://github.com/neologd/mecab-unidic-neologd /tmp/mecab-unidic-neologd
 WORKDIR /tmp/mecab-unidic-neologd
 RUN ./bin/install-mecab-unidic-neologd -n -y
-WORKDIR /tmp/
+WORKDIR /tmp
 COPY ./requirements.txt /tmp/requirements.txt
 RUN : "favorite packages" && \
     python3.7 -m pip install -r /tmp/requirements.txt && \
@@ -30,5 +30,6 @@ RUN : "favorite packages" && \
 COPY ./custom.css /root/.jupyter/custom/custom.css
 RUN : "jupyter setting" && \
     python3.7 -m jupyter notebook --generate-config
+WORKDIR /var/assets
 ENTRYPOINT ["jupyter", "notebook"]
 CMD ["--no-browser", "--port", "8888", "--ip", "0.0.0.0", "--allow-root"]
