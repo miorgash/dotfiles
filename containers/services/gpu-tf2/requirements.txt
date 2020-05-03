@@ -6,4 +6,4 @@ keras-bert==0.81.0
 keras-self-attention==0.41.0
 numpy==1.18.1
 pandas==0.25.3
-tensorflow==2.1.0
+tensorflow==2.2.0-rc1

@@ -12,8 +12,6 @@ RUN : "essential" && \
     python3.7 -m pip install -U setuptools && \
     python3.7 -m pip install -U six
 RUN : "image peculiar settings" && \
-    : "directories" && \
-    mkdir -p ~/.jupyter/custom && \
     : "MeCab and dictionaries": && \
     apt install mecab libmecab-dev mecab-ipadic-utf8 -y && \
     apt install unidic-mecab -y && \
@@ -22,29 +20,21 @@ RUN : "image peculiar settings" && \
     git clone --depth 1 https://github.com/neologd/mecab-unidic-neologd /tmp/mecab-unidic-neologd
 WORKDIR /tmp/mecab-unidic-neologd
 RUN ./bin/install-mecab-unidic-neologd -n -y
-WORKDIR /var
 COPY ./requirements.txt /var/requirements.txt
 RUN : "Default kernel" && \
     pip install -U pip && \
     pip install -r /var/requirements.txt
+COPY ./TensorFlow-2.2.0/requirements.txt /var/kernels/TensorFlow-2.2.0/requirements.txt
+RUN : "Kernel for TensorFlow 2.2.0" && \
+    python3.7 -m venv /var/kernels/TensorFlow-2.2.0/venv && \
+    . /var/kernels/TensorFlow-2.2.0/venv/bin/activate && \
+    pip install -U pip && \
+    pip install -r /var/kernels/TensorFlow-2.2.0/requirements.txt && \
+    ipython kernel install --user --name=TensorFlow-2.2.0 --display-name=TensorFlow-2.2.0 && \
+    deactivate
 RUN : "jupyter setting" && \
-    python3.7 -m jupyter notebook --generate-config
-COPY ./TensorFlow-1.14.0/requirements.txt /var/kernels/TensorFlow-1.14.0/requirements.txt
-RUN : "Kernel for TensorFlow 1.14.0" && \
-    python3.7 -m venv /var/kernels/TensorFlow-1.14.0/venv && \
-    . /var/kernels/TensorFlow-1.14.0/venv/bin/activate && \
-    pip install -U pip && \
-    pip install -r /var/kernels/TensorFlow-1.14.0/requirements.txt && \
-    ipython kernel install --user --name=TensorFlow-1.14.0 --display-name=TensorFlow-1.14.0 && \
-    deactivate
-COPY ./TensorFlow-2.1.0/requirements.txt /var/kernels/TensorFlow-2.1.0/requirements.txt
-RUN : "Kernel for TensorFlow 2.1.0" && \
-    python3.7 -m venv /var/kernels/TensorFlow-2.1.0/venv && \
-    . /var/kernels/TensorFlow-2.1.0/venv/bin/activate && \
-    pip install -U pip && \
-    pip install -r /var/kernels/TensorFlow-2.1.0/requirements.txt && \
-    ipython kernel install --user --name=TensorFlow-2.1.0 --display-name=TensorFlow-2.1.0 && \
-    deactivate
+    python3.7 -m jupyter notebook --generate-config && \
+    mkdir -p ~/.jupyter/custom
 COPY ./custom.css /root/.jupyter/custom/custom.css
 WORKDIR /var/assets
 ENTRYPOINT ["jupyter", "notebook"]
