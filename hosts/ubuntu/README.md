@@ -57,6 +57,7 @@ ln -sf ${HOME}/assets/env/hosts/dotfiles/.tmux.conf ${HOME}/.tmux.conf
     ```console
     echo '\n# nvim settings' >> ~/.zshrc
     echo 'export XDG_CONFIG_HOME="${HOME}/.config"' >> ~/.zshrc
+    echo 'export NVIM_PYTHON_LOG_FILE="${HOME}/.config/nvim/log"' >> ~/.zshrc
     echo '\n# alias' >> ~/.zshrc
     echo 'alias vim=nvim' >> ~/.zshrc
     exit # 設定反映のため再度ログイン
