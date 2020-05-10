@@ -94,6 +94,8 @@ Using `docker run` command:
 ```
 $ # for ubuntu, osx and other linux
 $ sudo docker run -itd -p 8888:8888 -v ~/assets:/var/assets --restart=always --name py miorgash/py:latest
+$ # With data container
+$ sudo docker run -itd -p 8888:8888 -v ~/assets:/var/assets --volumes-from fever-common --restart=always --name py miorgash/py:latest
 ```
 ! Using GPUs via docker-compose is not stable.
 
