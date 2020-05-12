@@ -15,6 +15,7 @@ mojimoji==0.0.9.post0
 numpy==1.18.1
 openpyxl==3.0.3
 pandas==0.25.3
+pandas-access==0.0.1
 pandas-profiling==2.5.0
 pathlib==1.0.1
 plotly==4.5.0
