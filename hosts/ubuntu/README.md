@@ -24,7 +24,8 @@
 1. clone this repo
 
     ```console
-    git clone https://github.com/miorgash/env.git ~/env
+    mkdir ~/assets
+    git clone https://github.com/miorgash/env.git ~/assets/env
     ```
 
 ## 2. zsh
