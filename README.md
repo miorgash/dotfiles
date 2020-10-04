@@ -34,7 +34,7 @@
 
 ## 2.2. Container
 
-- Python 環境はコンテナで管理する
+- Python 環境を管理する
 
 ### 2.2.1. py
 
