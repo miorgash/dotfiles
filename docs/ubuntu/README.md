@@ -41,7 +41,7 @@
 
 ## 3. tmux
 ```console
-ln -sf ${HOME}/assets/env/hosts/dotfiles/.tmux.conf ${HOME}/.tmux.conf
+ln -sf ${PATH_TO}/dotfiles/.tmux.conf $HOME/.tmux.conf
 ```
 
 ## 4. nvim
