@@ -1,21 +1,9 @@
 # Design
 ```
-- hosts
-    - osx
-        - README.md
-    - ubuntu
-        - README.md
+- dotfiles
+    - docs
+    - scripts
     - dotfiles
-        - init.vim
-        - .tmux.conf
-- container
-    - apps
-        - $app_name
-            - docker-compose.yml
-    - services
-        - $image_name
-            - Dockerfile
-            - requirements.txt, custom.css, etc.
 ```
 
 # 2. Use cases, requirements, motivations
