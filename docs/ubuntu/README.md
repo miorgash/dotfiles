@@ -24,8 +24,7 @@
 1. clone this repo
 
     ```console
-    mkdir ~/assets
-    git clone https://github.com/miorgash/env.git ~/assets/env
+    git clone https://github.com/miorgash/dotfiles.git ~/dotfiles
     ```
 
 ## 2. zsh
@@ -41,7 +40,7 @@
 
 ## 3. tmux
 ```console
-ln -sf ${PATH_TO}/dotfiles/.tmux.conf $HOME/.tmux.conf
+ln -sf ${HOME}/dotfiles/dotfiles/.tmux.conf ${HOME}/.tmux.conf
 ```
 
 ## 4. nvim
@@ -69,7 +68,7 @@ ln -sf ${PATH_TO}/dotfiles/.tmux.conf $HOME/.tmux.conf
 
     ```console
     mkdir -p ${XDG_CONFIG_HOME}/nvim/colors
-    ln -sf ${HOME}/assets/env/hosts/dotfiles/init.vim ${XDG_CONFIG_HOME}/nvim/init.vim
+    ln -sf ${HOME}/dotfiles/dotfiles/init.vim ${XDG_CONFIG_HOME}/nvim/init.vim
     git clone https://github.com/cocopon/iceberg.vim/ ${HOME}/iceberg.vim
     cp ${HOME}/iceberg.vim/colors/iceberg.vim ${XDG_CONFIG_HOME}/nvim/colors/iceberg.vim
     
