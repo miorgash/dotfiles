@@ -190,6 +190,10 @@ Check, uninstall current version if exists, and install required version
     
         ```console
         sudo apt list --installed | grep cudnn
+	# or
+	cat /usr/local/cuda/include/cudnn.h  | grep CUDNN_MAJOR -A 2
+	# or 
+	cat /usr/include/cudnn.h | grep CUDNN_MAJOR -A 2
         ```
 
     1. Download required packages from [NVIDIA Developer - cuDNN Archive](https://developer.nvidia.com/rdp/cudnn-archive#a-collapse742-10) 
